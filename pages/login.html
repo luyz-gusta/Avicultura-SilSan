@@ -13,6 +13,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/login/style.css">
+    <link rel="stylesheet" href="../css/login/modal.css">
     <link rel="shortcut icon" type="imagex/png" href="./img/images-removebg-preview.png">
     <script src="../js/login/main.js" defer type="module"></script>
     <title>Login AVSILSAN</title>
@@ -63,7 +64,41 @@
 
         </div>
     </div>
+
+    <!-- MODAL ADICIONAR CURSOS -->
+    <div id="modal__adicionar" class="modal__adicionar">
+        <form class="modal__adicionar--content" id="modal__adicionar--content">
+            <p class="nome__modal">Adicionar um Curso</p>
+            <div class="input__nome">
+                <label for="">Nome do Curso:</label>
+                <input type="text" name="nome" id="myInputNome" maxlength="100" style="width: 100%;" required>
+            </div>
+            <div class="sigla__carga--horaria">
+                <div class="input__sigla">
+                    <label for="">Sigla:</label>
+                    <input type="text" name="sigla" id="myInputSigla" maxlength="5" required>
+                </div>
+                <div class="input__carga--horaria">
+                    <label for="">Carga Horaria:</label>
+                    <input type="number" name="carga_horaria" id="myInputCargaHoraria" min="0" required>
+                </div>
+            </div>
+            <div class='input__file'>
+                <label for="">URL da Imagem:</label>
+                <input type="url" name="url" id="myInputUrl" maxlength="2000" style="width: 100%;" required>
+            </div>
+            <div class="input__descricao">
+                <label for="">Descrição:</label>
+                <textarea tabindex="5" id="myInputDescricao" required></textarea>
+            </div>
+            <div class="modal__adicionar--footer">
+                <a type="submit" id="salvarBtn">Salvar</a>
+            </div>
+            <a href="#" class="modal__adicionar--close">&times;</a>
+        </form>
     </div>
+
+
 </body>
 
 </html>

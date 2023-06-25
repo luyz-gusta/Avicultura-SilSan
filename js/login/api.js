@@ -5,6 +5,5 @@ export const getUsuarioLogin = async (email, senha) => {
     const response = await fetch(url)
     const data = await response.json()
 
-    console.log(data);
     return data
 }
