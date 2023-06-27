@@ -9,11 +9,18 @@ const goPaginaProduto = async () => {
     let result = await getUsuarioLogin(email, password)
 
     if (result.status == 200) {
-        if (result.usuario[0].id_status_usuario == 1) {
+        console.log(result);
+        if (result.usuarios[0].id_status_usuario == 1) { //ADM
+            
+            localStorage.setItem('id', result.usuarios[0].id)
+            localStorage.setItem('email', result.usuarios[0].email)
+            localStorage.setItem('senha', result.usuarios[0].senha)
+            localStorage.setItem('nivel', result.usuarios[0].nivel)
+            window.location.href = "./adm.html"
+
+        } else if (result.usuario[0].id_status_usuario == 2) { //LOJISTA
             //console.log(result.usuario[0]);
-        } else if (result.usuario[0].id_status_usuario == 2) {
-            //console.log(result.usuario[0]);
-        } else if (result.usuario[0].id_status_usuario == 3) {
+        } else if (result.usuario[0].id_status_usuario == 3) { // CLIENTE
             console.log(result.usuario[0]);
         } else {
             console.log('error de usuario');
