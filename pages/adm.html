@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Glory:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/adm/header.css">
+    <link rel="stylesheet" href="../css/adm/main.css">
+
+    <script src="https://kit.fontawesome.com/cb4f3aa626.js" crossorigin="anonymous"></script>
+    <script type="module" defer src="../js/adm/password.js"></script>
+    <title>SilSan-ADMIN</title>
+</head>
+
+<body>
+    <header>
+        <img src="../imgs/logo.png" alt="logo" class="logo">
+    </header>
+    <main>
+        <section class="container__usuario">
+            <div class="usuario">
+                <i class="fa-solid fa-user"></i>
+                <div class="usuario__dados">
+                    <div class="linha1">
+                        <span>Lojista,</span>
+                        <span>Luiz Gustavo</span>
+                    </div>
+                    <input type="password" value="152930" readonly class="password__input" disabled>
+                </div>
+            </div>
+            <a href="./login.html" class="exit">Sair</a>
+        </section>
+        <section class="container__password">
+            <span class="new__password">Troca de Senha:</span>
+            <form action="#">
+                <div class="group__password">
+                    <div class="form__password">
+                        <label for="password">Senha antiga:</label>
+                        <div class="password">
+                            <input type="password" name="password" id="input-password-old">
+                            <i class="fa-solid fa-eye" id="icon-old"></i>
+                        </div>
+                    </div>
+                    <div class="form__password">
+                        <label for="password">Nova senha: </label>
+                        <div class="password">
+                            <input type="password" name="password" id="input-password-new">
+                            <i class="fa-solid fa-eye" id="icon-new"></i>
+                        </div>
+                    </div>
+                    <div class="form__password">
+                        <label for="password">Confirme a nova senha:</label>
+                        <div class="password">
+                            <input type="password" name="password" id="input-password-confirmation">
+                            <i class="fa-solid fa-eye" id="icon-confirmation"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" onclick=""> Enviar </button>
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>

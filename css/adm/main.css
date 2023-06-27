@@ -1,0 +1,140 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80vh;
+    padding-top: 35px;
+    gap: 20px;
+}
+
+.container__usuario {
+    display: flex;
+    justify-content: space-between;
+    height: clamp(7.5rem, 6.75rem + 3.75vw, 11.25rem);
+    width: clamp(20rem, 4rem + 80vw, 100rem);
+    padding: clamp(1.25rem, 1.1875rem + 0.3125vw, 1.5625rem) clamp(1.25rem, 1rem + 1.25vw, 2.5rem);
+    border-radius: 40px;
+    background: linear-gradient(180deg, #FD6D00 0%, #FD6D05 0.01%, #F9D8C0 100%);
+
+    color: #FFF;
+}
+
+.usuario {
+    display: flex;
+    gap: clamp(0.625rem, 0.5rem + 0.625vw, 1.25rem);
+}
+
+.usuario i {
+    font-size: clamp(2.5rem, 2.125rem + 1.875vw, 4.375rem);
+    color: white;
+}
+
+.linha1 {
+    width: clamp(12.5rem, 9rem + 13.3333vw, 25rem);
+    color: #FFF;
+    font-size: clamp(1rem, 0.72rem + 1.0667vw, 2rem);
+    font-family: "Glory";
+    font-style: italic;
+    font-weight: 700;
+}
+
+.password__input {
+    width: clamp(12.5rem, 9rem + 13.3333vw, 25rem);
+    background: transparent;
+    border: none;
+    font-size: 32px;
+    color: #FFF;
+}
+
+a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: clamp(6.25rem, 4.325rem + 7.3333vw, 13.125rem);
+    height: clamp(3.125rem, 2.88rem + 0.9333vw, 4rem);
+    border-radius: 30px;
+    border: 1px solid #000;
+    background: #fa8029;
+
+    font-size: clamp(1rem, 0.72rem + 1.0667vw, 2rem);
+    font-family: "Glory";
+    font-style: italic;
+    font-weight: 700;
+}
+
+
+/*Container troca de senha*/
+.container__password {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 280px;
+    width: clamp(20rem, 4rem + 80vw, 100rem);
+    padding: clamp(1.25rem, 1.1875rem + 0.3125vw, 1.5625rem) clamp(1.25rem, 1rem + 1.25vw, 2.5rem);
+    border-radius: 40px;
+    background: linear-gradient(180deg, #FD6D00 0%, #FD6D05 15%, #F9D8C0 100%);
+}
+
+.new__password {
+    color: #FFF;
+    font-size: clamp(1rem, 0.72rem + 1.0667vw, 2rem);
+    font-family: "Glory";
+    font-style: italic;
+    font-weight: 700;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.form__password {
+    display: flex;
+    gap: 10px;
+}
+
+.group__password{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form__password input {
+    width: 200px;
+    height: 25px;
+    border-radius: 10px;
+    border: solid 1px black;
+}
+
+.form__password i {
+    position: relative;
+    margin-left: -25px;
+    z-index: +1;
+    cursor: pointer;
+}
+
+label{
+    color: #FFF;
+    font-size: 20px;
+    font-family: "Glory";
+    font-style: italic;
+    font-weight: 700;
+}
+
+form button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: clamp(6.25rem, 4.325rem + 7.3333vw, 13.125rem);
+    height: clamp(3.125rem, 2.88rem + 0.9333vw, 4rem);
+    border-radius: 30px;
+    border: 1px solid #000;
+    background: #fa8029;
+
+    color: #FFF;
+    font-size: clamp(1rem, 0.72rem + 1.0667vw, 2rem);
+    font-family: "Glory";
+    font-style: italic;
+    font-weight: 700;
+}

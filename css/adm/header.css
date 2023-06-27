@@ -1,0 +1,18 @@
+header {
+    background: linear-gradient(180deg, #FF5C00 0%, rgba(255, 160, 12, 0) 322.7%);
+    display: flex;
+
+    align-items: center;
+    padding: 20px 40px;
+    height: 110px;
+}
+
+@media (max-width: 999px) {
+    header {
+        padding: 10px;
+    }
+
+    .logo {
+        width: 40%;
+    }
+}
