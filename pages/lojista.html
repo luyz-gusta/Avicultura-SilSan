@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/30058942d9.js" crossorigin="anonymous"></script>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Glory:ital,wght@1,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/lojista/reset.css">
+    <link rel="stylesheet" href="../css/lojista/style.css">
+    <link rel="stylesheet" href="../css/lojista/dados.css">
+    <link rel="stylesheet" href="../css/lojista/modal.css">
+
+    <script src="../js/lojista/index.js" defer type="module"></script>
+
+    <script>
+        function gerarCodigo() {
+            var codigo = Math.random().toString(36).substring(2, 8).toUpperCase();
+            document.getElementById("codigoGerado").value = codigo;
+        }
+    </script>
+
+
+    <title>Cadastro de Produtos</title>
+</head>
+
+<body>
+    <header>
+        <img src="../imgs/lojista/logo.png" alt="logo" class="logo">
+        <div class="usuario">
+            <i class="fa-solid fa-user"></i>
+            <div class="usuario-logado">
+                <p class="user">Olá, Luiz Gustavo</p>
+                <p class="dados">Alterar Dados</p>
+            </div>
+        </div>
+    </header>
+    <main>
+        <nav>
+            <div class="produtos">
+                <h1 class="produtos-cadastrados">
+                    Produtos Cadastrados
+                </h1>
+                <a class="adicionar-produto" href="#modal__adicionar">
+                    <i class="fa fa-plus"></i>
+                </a>
+            </div>
+            <div class="linha"></div>
+        </nav>
+
+
+        <!-- MODAL ADICIONAR PRODUTOS -->
+        <div id="modal__adicionar" class="modal__adicionar">
+            <form class="modal__adicionar--content" id="modal__adicionar--content">
+                <p class="nome__modal">Adicionar um Produto</p>
+                <div class="input__nome  input--displayFlex">
+                    <label for="">Nome:</label>
+                    <input type="text" name="nome" id="myInputNome" placeholder="Ração de Cachorro" style="width: 75%;"
+                        required>
+                </div>
+                <div class="peso__valor">
+                    <div class="inputs__peso__valor input--displayFlex">
+                        <label for="">Peso :</label>
+                        <input type="number" name="peso" id="myInputPeso" required>
+                    </div>
+                    <div class="inputs__peso__valor input--displayFlex">
+                        <label for="">R$</label>
+                        <input type="number" name="valor" id="myInputPreco" required>
+                    </div>
+                </div>
+                <div class="input__cupom input--displayFlex">
+                    <button onclick="gerarCodigo()">Gerar Cupom</button>
+                    <input type="text" id="codigoGerado" readonly>
+                </div>
+                <div class="input__descricao">
+                    <label for="">Descrição :</label>
+                    <textarea tabindex="5" id="myInputDescricao" required></textarea>
+                </div>
+
+
+                <div class="dropdownCurso">
+                    <div class="adicionar--curso">
+                        <label for="materias_cursos">Para qual pet?</label>
+                        <select id="materias_cursos" name="cursos">
+                            <option value="cachorro">Cachorro</option>
+                            <option value="aves">Aves</option>
+                            <option value="gatos">Gatos</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal__adicionar--footer">
+                    <a type="submit" id="salvarBtn">Salvar</a>
+                </div>
+                <a href="#" class="modal__adicionar--close">&times;</a>
+            </form>
+        </div>
+
+
+        <div class="cards-produtos" id="cards-produtos">
+            <!-- <div class="card">
+                <img src="./img/Ração Cachorro - Special Dog adulto - 15KG (1).png" alt="Ração">
+                <div class="descricao">
+                    Ração Cachorro - Special Dog adulto - 15kg
+                </div>
+                <div class="preco">
+                    R$ 259,99
+                </div>
+                
+                <div class="editar-deletar">
+                    <div class="cupom">
+                        <p>Cupom:</p>
+                        <p>E457HJ</p>
+                    </div>
+                    <div class="editar">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <div class="deletar">
+                        <i class="fa-solid fa-trash"></i>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        
+        <!-- MODAL DELETAR CURSOS -->
+      <div class="modal__deletar" id="modal__deletar">
+        <div class="modal__deletar--content" id="modal__deletar--content">
+          <p class="nome__modal--deletar">Deseja mesmo Deletar?</p>
+          <div class="modal__deletar--footer">
+            <a type="submit" id="naoDeletar" href="#">Não</a>
+            <a type="submit" id="Deletar" href="#">Sim</a>
+          </div>
+          <a href="#" class="modal__deletar--close" id="sair">&times;</a>
+        </div>
+      </div>
+    </main>
+</body>
+
+</html>

@@ -242,4 +242,5 @@ body {
     max-width: 1000px;
     border-radius: 4px;
     box-shadow: rgba(0, 0, 0, 4);
+    cursor: pointer;
 }

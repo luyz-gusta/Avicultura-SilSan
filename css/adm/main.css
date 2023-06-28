@@ -101,7 +101,8 @@ form{
 }
 
 .form__password input {
-    width: 200px;
+    padding: 0 10px;
+    width: 300px;
     height: 25px;
     border-radius: 10px;
     border: solid 1px black;

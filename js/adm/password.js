@@ -7,7 +7,7 @@ const showPasswordOld = () => {
         input.setAttribute("type", "text")
         icon.classList.remove('fa-eye')
         icon.classList.add('fa-eye-slash')
-    }else{
+    } else {
         input.setAttribute("type", "password")
         icon.classList.add('fa-eye')
         icon.classList.remove('fa-eye-slash')
@@ -22,7 +22,7 @@ const showPasswordNew = () => {
         input.setAttribute("type", "text")
         icon.classList.remove('fa-eye')
         icon.classList.add('fa-eye-slash')
-    }else{
+    } else {
         input.setAttribute("type", "password")
         icon.classList.add('fa-eye')
         icon.classList.remove('fa-eye-slash')
@@ -37,7 +37,7 @@ const showPasswordConfirmation = () => {
         input.setAttribute("type", "text")
         icon.classList.remove('fa-eye')
         icon.classList.add('fa-eye-slash')
-    }else{
+    } else {
         input.setAttribute("type", "password")
         icon.classList.add('fa-eye')
         icon.classList.remove('fa-eye-slash')
@@ -47,11 +47,16 @@ document.getElementById('icon-confirmation').addEventListener('click', showPassw
 
 
 const enviarSenha = async () => {
-    let inputSenha 
+    let inputSenha
 
 }
 
-
+document.getElementById('exit').addEventListener('click', () => {
+    localStorage.setItem('id', '')
+    localStorage.setItem('email', '')
+    localStorage.setItem('senha', '')
+    localStorage.setItem('nivel', '')
+})
 
 
 

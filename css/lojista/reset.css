@@ -1,0 +1,23 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Glory', sans-serif;
+}
+ul, ol, li {
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+html, body{
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr;
+}

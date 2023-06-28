@@ -21,18 +21,20 @@
         <img src="../imgs/logo.png" alt="logo" class="logo">
     </header>
     <main>
-        <section class="container__usuario">
-            <div class="usuario">
-                <i class="fa-solid fa-user"></i>
-                <div class="usuario__dados">
-                    <div class="linha1">
-                        <span>Lojista,</span>
-                        <span>Luiz Gustavo</span>
+        <section>
+            <div class="container__usuario">
+                <div class="usuario">
+                    <i class="fa-solid fa-user"></i>
+                    <div class="usuario__dados">
+                        <div class="linha1">
+                            <span>Lojista,</span>
+                            <span>Luiz Gustavo</span>
+                        </div>
+                        <input type="password" value="152930" readonly class="password__input" disabled>
                     </div>
-                    <input type="password" value="152930" readonly class="password__input" disabled>
                 </div>
+                <a href="./login.html" class="exit" id="exit">Sair</a>
             </div>
-            <a href="./login.html" class="exit">Sair</a>
         </section>
         <section class="container__password">
             <span class="new__password">Troca de Senha:</span>
@@ -41,21 +43,21 @@
                     <div class="form__password">
                         <label for="password">Senha antiga:</label>
                         <div class="password">
-                            <input type="password" name="password" id="input-password-old">
+                            <input type="password" name="password" id="input-password-old" maxlength="40">
                             <i class="fa-solid fa-eye" id="icon-old"></i>
                         </div>
                     </div>
                     <div class="form__password">
                         <label for="password">Nova senha: </label>
                         <div class="password">
-                            <input type="password" name="password" id="input-password-new">
+                            <input type="password" name="password" id="input-password-new" maxlength="40">
                             <i class="fa-solid fa-eye" id="icon-new"></i>
                         </div>
                     </div>
                     <div class="form__password">
                         <label for="password">Confirme a nova senha:</label>
                         <div class="password">
-                            <input type="password" name="password" id="input-password-confirmation">
+                            <input type="password" name="password" id="input-password-confirmation" maxlength="40">
                             <i class="fa-solid fa-eye" id="icon-confirmation"></i>
                         </div>
                     </div>
