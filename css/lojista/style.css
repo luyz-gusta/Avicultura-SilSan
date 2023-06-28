@@ -235,6 +235,28 @@ textarea {
     cursor: pointer;
 }
 
+.buttons{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.exit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: clamp(4.375rem, 2.975rem + 5.3333vw, 9.375rem);
+    height: clamp(1.875rem, 1.525rem + 1.3333vw, 3.125rem);
+    border-radius: 30px;
+    border: 1px solid #000;
+    background: #fa8029;
+
+    font-size: clamp(1rem, 0.72rem + 1.0667vw, 2rem);
+    font-family: "Glory";
+    font-style: italic;
+    font-weight: 700;
+}
+
 
 @media (max-width: 999px) {
     header {
