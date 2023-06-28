@@ -15,7 +15,9 @@
     <link rel="stylesheet" href="../css/lojista/reset.css">
     <link rel="stylesheet" href="../css/lojista/style.css">
     <link rel="stylesheet" href="../css/lojista/dados.css">
-    <link rel="stylesheet" href="../css/lojista/modal.css">
+    <link rel="stylesheet" href="../css/lojista/modal-erro.css">
+    <link rel="stylesheet" href="../css/lojista/modal-editar.css">
+    <link rel="stylesheet" href="../css/lojista/modal-excluir.css">
 
     <script src="../js/lojista/index.js" defer type="module"></script>
 
@@ -36,7 +38,7 @@
         <div class="usuario">
             <i class="fa-solid fa-user"></i>
             <div class="usuario-logado">
-                <p class="user">Olá, Luiz Gustavo</p>
+                <p class="user">Olá, <span id="nome_usuario"></span></p>
                 <p class="dados">Alterar Dados</p>
             </div>
         </div>
@@ -47,7 +49,7 @@
                 <h1 class="produtos-cadastrados">
                     Produtos Cadastrados
                 </h1>
-                <a class="adicionar-produto" href="#modal__adicionar">
+                <a class="adicionar-produto" href="#" id="openModal">
                     <i class="fa fa-plus"></i>
                 </a>
             </div>
@@ -61,36 +63,59 @@
                 <p class="nome__modal">Adicionar um Produto</p>
                 <div class="input__nome  input--displayFlex">
                     <label for="">Nome:</label>
-                    <input type="text" name="nome" id="myInputNome" placeholder="Ração de Cachorro" style="width: 75%;"
-                        required>
+                    <input type="text" name="nome" id="myInputNome" placeholder="Digite o nome do produto" required>
                 </div>
                 <div class="peso__valor">
                     <div class="inputs__peso__valor input--displayFlex">
                         <label for="">Peso :</label>
-                        <input type="number" name="peso" id="myInputPeso" required>
+                        <!-- <input type="number" name="peso" id="myInputPeso" required placeholder="Digite o peso"> -->
+                        <input type="number" placeholder="Digite o peso" required id="myInputPeso" name="peso" min="0" value="0" step="0.01"
+                            title="Currency" pattern="^\d+(?:\.\d{1,2})?$" onblur="
+this.parentNode.parentNode.style.backgroundColor=/^\d+(?:\.\d{1,2})?$/.test(this.value)?'inherit':'transparent'
+">
                     </div>
                     <div class="inputs__peso__valor input--displayFlex">
-                        <label for="">R$</label>
-                        <input type="number" name="valor" id="myInputPreco" required>
+                        <label for="">Preco Original</label>
+                        <!-- <input type="number" name="valor" id="myInputPreco" required placeholder="Valor sem desconto"> -->
+                        <input type="number" name="valor" id="myInputPreco" required placeholder="Valor sem desconto" min="0" value="0" step="0.01"
+                            title="Currency" pattern="^\d+(?:\.\d{1,2})?$" onblur="
+this.parentNode.parentNode.style.backgroundColor=/^\d+(?:\.\d{1,2})?$/.test(this.value)?'inherit':'transparent'
+">
+                    </div>
+                    <div class="inputs__peso__valor input--displayFlex">
+                        <label for="valor_desconto">Preco Desconto</label>
+                        <input type="number" name="valor_desconto" id="myInputPrecoDesconto" required
+                        placeholder="Valor com Desconto" min="0" value="0" step="0.01"
+                            title="Currency" pattern="^\d+(?:\.\d{1,2})?$" onblur="
+this.parentNode.parentNode.style.backgroundColor=/^\d+(?:\.\d{1,2})?$/.test(this.value)?'inherit':'transparent'
+">
+                        <!-- <input type="number" name="valor_desconto" id="myInputPrecoDesconto" required
+                            placeholder="Valor com Desconto"> -->
                     </div>
                 </div>
                 <div class="input__cupom input--displayFlex">
                     <button onclick="gerarCodigo()">Gerar Cupom</button>
-                    <input type="text" id="codigoGerado" readonly>
+                    <input type="text" id="codigoGerado" placeholder="Digite o codigo ou gere" maxlength="6"
+                        minlength="6">
                 </div>
                 <div class="input__descricao">
                     <label for="">Descrição :</label>
-                    <textarea tabindex="5" id="myInputDescricao" required></textarea>
+                    <textarea tabindex="5" id="myInputDescricao" required
+                        placeholder="Digite a descricao do produto"></textarea>
+                </div>
+                <div class="input__nome  input--displayFlex">
+                    <label for="">Url da Imagem</label>
+                    <input type="url" name="url" id="myInputUrl" placeholder="Digite a url da foto do produto" required>
                 </div>
 
 
                 <div class="dropdownCurso">
-                    <div class="adicionar--curso">
+                    <div class="adicionar--tipo">
                         <label for="materias_cursos">Para qual pet?</label>
-                        <select id="materias_cursos" name="cursos">
-                            <option value="cachorro">Cachorro</option>
+                        <select id="tipos" name="cursos">
+                            <!-- <option value="cachorro">Cachorro</option>
                             <option value="aves">Aves</option>
-                            <option value="gatos">Gatos</option>
+                            <option value="gatos">Gatos</option> -->
                         </select>
                     </div>
                 </div>
@@ -104,14 +129,16 @@
 
         <div class="cards-produtos" id="cards-produtos">
             <!-- <div class="card">
-                <img src="./img/Ração Cachorro - Special Dog adulto - 15KG (1).png" alt="Ração">
+                <img src="../imgs/lojista/Ração Cachorro - Special Dog adulto - 15KG (1).png" alt="Ração">
                 <div class="descricao">
                     Ração Cachorro - Special Dog adulto - 15kg
                 </div>
                 <div class="preco">
                     R$ 259,99
                 </div>
-                
+                <div class="preco-desconto">
+                    R$ 229,99
+                </div>
                 <div class="editar-deletar">
                     <div class="cupom">
                         <p>Cupom:</p>
@@ -126,9 +153,86 @@
                 </div>
             </div> -->
         </div>
-        
+
         <!-- MODAL DELETAR CURSOS -->
       <div class="modal__deletar" id="modal__deletar">
+        <div class="modal__deletar--content" id="modal__deletar--content">
+          <p class="nome__modal--deletar">ERRO!! CONFIRA OS DADOS DIGITADOS</p>
+          <a href="#" class="modal__deletar--close" id="sair">&times;</a>
+        </div>
+      </div>
+
+      <!-- MODAL EDITAR PRODUTOS -->
+      <div id="modal__editar" class="modal__editar">
+        <form class="modal__editar--content" id="modal__editar--content">
+            <p class="nome__modal">Editar um Produto</p>
+            <div class="input__nome  input--displayFlex">
+                <label for="">Nome:</label>
+                <input type="text" name="nome" id="myInputNomeEditar" required>
+            </div>
+            <div class="peso__valor">
+                <div class="inputs__peso__valor input--displayFlex">
+                    <label for="">Peso :</label>
+                    <!-- <input type="number" name="peso" id="myInputPeso" required placeholder="Digite o peso"> -->
+                    <input type="number" placeholder="Digite o peso" required id="myInputPesoEditar" name="peso" min="0" value="0" step="0.01"
+                        title="Currency" pattern="^\d+(?:\.\d{1,2})?$" onblur="
+this.parentNode.parentNode.style.backgroundColor=/^\d+(?:\.\d{1,2})?$/.test(this.value)?'inherit':'transparent'
+">
+                </div>
+                <div class="inputs__peso__valor input--displayFlex">
+                    <label for="">Preco Original</label>
+                    <!-- <input type="number" name="valor" id="myInputPreco" required placeholder="Valor sem desconto"> -->
+                    <input type="number" name="valor" id="myInputPrecoEditar" required placeholder="Valor sem desconto" min="0" value="0" step="0.01"
+                        title="Currency" pattern="^\d+(?:\.\d{1,2})?$" onblur="
+this.parentNode.parentNode.style.backgroundColor=/^\d+(?:\.\d{1,2})?$/.test(this.value)?'inherit':'transparent'
+">
+                </div>
+                <div class="inputs__peso__valor input--displayFlex">
+                    <label for="valor_desconto">Preco Desconto</label>
+                    <input type="number" name="valor_desconto" id="myInputPrecoDescontoEditar" required
+                    placeholder="Valor com Desconto" min="0" value="0" step="0.01"
+                        title="Currency" pattern="^\d+(?:\.\d{1,2})?$" onblur="
+this.parentNode.parentNode.style.backgroundColor=/^\d+(?:\.\d{1,2})?$/.test(this.value)?'inherit':'transparent'
+">
+                    <!-- <input type="number" name="valor_desconto" id="myInputPrecoDesconto" required
+                        placeholder="Valor com Desconto"> -->
+                </div>
+            </div>
+            <div class="input__cupom input--displayFlex">
+                <button onclick="gerarCodigo()">Gerar Cupom</button>
+                <input type="text" id="codigoGeradoEditar" placeholder="Digite o codigo ou gere" maxlength="6"
+                    minlength="6">
+            </div>
+            <div class="input__descricao">
+                <label for="">Descrição :</label>
+                <textarea tabindex="5" id="myInputDescricaoEditar" required
+                    placeholder="Digite a descricao do produto"></textarea>
+            </div>
+            <div class="input__nome  input--displayFlex">
+                <label for="">Url da Imagem</label>
+                <input type="url" name="url" id="myInputUrlEditar" placeholder="Digite a url da foto do produto" required>
+            </div>
+
+
+            <div class="dropdownCurso">
+                <div class="editar--tipo">
+                    <label for="materias_cursos">Para qual pet?</label>
+                    <select id="tiposEditar" name="cursos">
+                        <!-- <option value="cachorro">Cachorro</option>
+                        <option value="aves">Aves</option>
+                        <option value="gatos">Gatos</option> -->
+                    </select>
+                </div>
+            </div>
+            <div class="modal__editar--footer">
+                <a type="submit" id="salvarBtn">Salvar</a>
+            </div>
+            <a href="#" class="modal__editar--close">&times;</a>
+        </form>
+    </div>
+
+        <!-- MODAL MUDAR DADOS -->
+        <!-- <div class="modal__deletar" id="modal__deletar">
         <div class="modal__deletar--content" id="modal__deletar--content">
           <p class="nome__modal--deletar">Deseja mesmo Deletar?</p>
           <div class="modal__deletar--footer">
@@ -136,6 +240,16 @@
             <a type="submit" id="Deletar" href="#">Sim</a>
           </div>
           <a href="#" class="modal__deletar--close" id="sair">&times;</a>
+        </div>
+      </div> -->
+      <div class="modal__deletar__produto" id="modal__deletar__produto">
+        <div class="modal__deletar--content__produto" id="modal__deletar--contentr__produto">
+          <p class="nome__modal--deletarr__produto">Deseja mesmo Deletar?</p>
+          <div class="modal__deletar--footerr__produto">
+            <a type="submit" id="naoDeletar" href="#">Não</a>
+            <a type="submit" id="deletar" href="#">Sim</a>
+          </div>
+          <a href="#" class="modal__deletar--closer__produto" id="sair">&times;</a>
         </div>
       </div>
     </main>

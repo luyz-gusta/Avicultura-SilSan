@@ -34,7 +34,9 @@ header {
     cursor: pointer;
 }
 
-
+body{
+    overflow-y: auto;
+}
 
 main {
     padding: 5vw 5vh;
@@ -80,6 +82,9 @@ nav {
     grid-template-columns: repeat(4, 1fr);
     place-items: center;
     grid-gap: 94px;
+    overflow-y: scroll;
+    scrollbar-color: rgba(253, 122, 5, 0.57);
+    height: 60vh;
 }
 
 .card {
@@ -100,6 +105,11 @@ nav {
 }
 
 .preco {
+    font-size: clamp(0.9375rem, 0.7895rem + 0.5921vw, 1.5rem);
+    text-decoration: line-through red;
+}
+
+.preco-desconto {
     font-size: clamp(0.9375rem, 0.7895rem + 0.5921vw, 1.5rem);
 }
 
@@ -158,6 +168,11 @@ nav {
     opacity: 1;
 }
 
+.open-modal{
+    visibility: visible;
+    opacity: 1;
+}
+
 .modal__adicionar--content {
     min-width: 50%;
     min-height: 50%;
@@ -169,7 +184,7 @@ nav {
     padding: 1em 2em;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 30px;
 }
 
 .modal__adicionar--footer {
@@ -191,19 +206,34 @@ nav {
 
 .peso__valor{
     display: flex;
-    gap: 30px;
+    gap: 10px;
 }
 
 label{
     color: aliceblue;
-    background-color: blueviolet;
+    background-color: #074A71;
     padding: 0px 10px;
+    width: 120px;
 }
 
+.input__descricao{
+    display: flex;
+}
 
+textarea {
+    width: 655px;
+    resize: none;
+    height: 60px;
+    overflow: auto;
+}
 
+#myInputNome, #myInputUrl, #myInputNomeEditar, #myInputUrlEditar{
+    width: 655px;
+}
 
-
+#salvarBtn{
+    cursor: pointer;
+}
 
 
 @media (max-width: 999px) {
