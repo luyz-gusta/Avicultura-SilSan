@@ -16,7 +16,7 @@ body {
 }
 
 .background {
-    background: url(../../imgs/login/fundo2.jpg) no-repeat rgba(5, 5, 5, 4);
+    background: url(../../imgs/login/fundo2.webp) no-repeat rgba(5, 5, 5, 4);
     background-position: center;
     background-size: cover;
     height: 100vh;
@@ -79,7 +79,7 @@ body {
     width: 75%;
     height: 550px;
     margin-top: 20px;
-    background: url(../../imgs/login/fundo2.jpg) no-repeat;
+    background: url(../../imgs/login/fundo2.webp) no-repeat;
     background-position: center;
     background-size: cover;
     border-radius: 15px;

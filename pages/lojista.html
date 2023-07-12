@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pagina para a manipulação de produtos de uma avicultura">
     <script src="https://kit.fontawesome.com/30058942d9.js" crossorigin="anonymous"></script>
 
 
@@ -50,7 +51,7 @@
                     Produtos Cadastrados
                 </h1>
                 <div class="buttons">
-                    <a class="adicionar-produto" href="#" id="openModal">
+                    <a class="adicionar-produto" href="#" id="openModal" aria-label="Botão para adicionar produto">
                         <i class="fa fa-plus"></i>
                     </a>
                     <a href="./login.html" class="exit" id="exit">Sair</a>
@@ -124,7 +125,7 @@ this.parentNode.parentNode.style.backgroundColor=/^\d+(?:\.\d{1,2})?$/.test(this
                     </div>
                 </div>
                 <div class="modal__adicionar--footer">
-                    <a type="submit" id="salvarBtn">Salvar</a>
+                    <a type="submit" id="salvarBtn" aria-label="salva os dados no banco de dados">Salvar</a>
                 </div>
                 <a href="#" class="modal__adicionar--close">&times;</a>
             </form>
@@ -233,7 +234,7 @@ this.parentNode.parentNode.style.backgroundColor=/^\d+(?:\.\d{1,2})?$/.test(this
                 <div class="modal__editar--footer">
                     <a type="submit" id="salvarBtn">Salvar</a>
                 </div>
-                <a href="#" class="modal__editar--close">&times;</a>
+                <a href="#" class="modal__editar--close"  aria-label="salva os dados no banco de dados">&times;</a>
             </form>
         </div>
 

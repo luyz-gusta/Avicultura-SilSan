@@ -14,6 +14,7 @@ const criarProdutos = (produto) => {
 
     const imagem_produto = document.createElement('img')
     imagem_produto.src = produto.url
+    imagem_produto.alt = produto.descricao
 
     const nome_produto = document.createElement('div')
     nome_produto.classList.add('descricao')
@@ -35,6 +36,7 @@ const criarProdutos = (produto) => {
 
     const icon_cupom = document.createElement('img')
     icon_cupom.src = "../../imgs/lojista/codigo-promocional.png"
+    icon_cupom.alt = "Icone de cupom"
 
     const dados_cupom = document.createElement('p')
     dados_cupom.textContent = produto.cupom
