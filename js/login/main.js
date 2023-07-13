@@ -7,7 +7,12 @@ const goPaginaProduto = async () => {
     let password = document.getElementById('password').value
 
     if (email == '' || email == null || email == undefined || password == '' || password == null || password == undefined) {
-        console.log('error');
+        let abrirModal = document.getElementById('modal__require-fields')
+
+        abrirModal.classList.add('open-require-fields')
+        document.querySelector('.modal__require-fields--close').addEventListener('click', () => {
+            abrirModal.classList.remove('open-require-fields')
+        })
     } else {
         let result = await getUsuarioLogin(email, password)
 
@@ -29,24 +34,34 @@ const goPaginaProduto = async () => {
                 localStorage.setItem('telefone', result.lojista.telefone)
                 window.location.href = "./lojista.html"
             } else if (result.usuario[0].id_status_usuario == 3) { // CLIENTE
-                console.log(result.usuario[0]);
+                let abrirModal = document.getElementById('modal__erro-cliente')
+
+                abrirModal.classList.add('open-erro-cliente')
+                document.querySelector('.modal__erro-cliente--close').addEventListener('click', () => {
+                    abrirModal.classList.remove('open-erro-cliente')
+                })
             } else {
                 console.log('error de usuario');
             }
             //window.location.href = "https://projeto-lion-school-2023-front.vercel.app"
-        } else if (result.status == 400 || result.status == 404) {
-            let abrirModal = document.getElementById('modal__adicionar')
+        } else if (result.status == 400) {
+            let abrirModal = document.getElementById('modal__email-incorreto')
 
-            abrirModal.classList.add('open-modal')
-            document.querySelector('.modal__adicionar--close').addEventListener('click', () => {
-                abrirModal.classList.remove('open-modal')
+            abrirModal.classList.add('open-email-incorreto')
+            document.querySelector('.modal__email-incorreto--close').addEventListener('click', () => {
+                abrirModal.classList.remove('open-email-incorreto')
+            })
+        } else if (result.status == 404) {
+            let abrirModal = document.getElementById('modal__senha-incorreta')
+
+            abrirModal.classList.add('open-senha-incorreta')
+            document.querySelector('.modal__senha-incorreta--close').addEventListener('click', () => {
+                abrirModal.classList.remove('open-senha-incorreta')
             })
         } else {
             console.log('error, usuario invalido');
         }
     }
-
-
 }
 
 

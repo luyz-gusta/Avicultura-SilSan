@@ -15,6 +15,10 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/login/style.css">
     <link rel="stylesheet" href="../css/login/modal.css">
+    <link rel="stylesheet" href="../css/login/modal_erro-cliente.css">
+    <link rel="stylesheet" href="../css/login/modal_senha-incorreta.css">
+    <link rel="stylesheet" href="../css/login/modal_email-incorreto.css">
+    <link rel="stylesheet" href="../css/login/modal_require-fields.css">
     <link rel="shortcut icon" type="imagex/png" href="./img/images-removebg-preview.png">
     <script src="../js/login/main.js" defer type="module"></script>
     <title>Login AVSILSAN</title>
@@ -99,7 +103,37 @@
         </form>
     </div>
 
+    <!-- MODAL ERRO CLIENTE-->
+    <div class="modal__erro-cliente" id="modal__erro-cliente">
+        <div class="modal__erro-cliente--content" id="modal__erro-cliente--content">
+            <p class="nome__modal--erro-cliente">ERRO!! ESSE LOGIN É SOMENTE PARA LOJISTA E ADM. ACESSE O APLICATIVO PARA LOGIN DE CLIENTE</p>
+            <a href="#" class="modal__erro-cliente--close" id="sair">&times;</a>
+        </div>
+    </div>
+
+    <!-- MODAL EMAIL INVALIDO-->
+    <div class="modal__email-incorreto" id="modal__email-incorreto">
+        <div class="modal__email-incorreto--content" id="modal__email-incorreto--content">
+            <p class="nome__modal--email-incorreto">ERRO!! EMAIL INVALIDO</p>
+            <a href="#" class="modal__email-incorreto--close" id="sair">&times;</a>
+        </div>
+    </div>
+
+    <!-- MODAL SENHA INCORRETA-->
+    <div class="modal__senha-incorreta" id="modal__senha-incorreta">
+        <div class="modal__senha-incorreta--content" id="modal__senha-incorreta--content">
+            <p class="nome__modal--senha-incorreta">ERRO!! SENHA INVALIDA</p>
+            <a href="#" class="modal__senha-incorreta--close" id="sair">&times;</a>
+        </div>
+    </div>
+
+    <!-- MODAL INPUTS VAZIOS-->
+    <div class="modal__require-fields" id="modal__require-fields">
+        <div class="modal__require-fields--content" id="modal__require-fields--content">
+            <p class="nome__modal--require-fields">ERRO!! EMAIL E SENHA DEVEM ESTAR PREENCHIDOS</p>
+            <a href="#" class="modal__require-fields--close" id="sair">&times;</a>
+        </div>
+    </div>
 
 </body>
-
 </html>
