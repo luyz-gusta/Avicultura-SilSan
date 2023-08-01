@@ -46,7 +46,7 @@ main {
     color: #FFF;
 }
 
-a {
+.exit {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -123,7 +123,7 @@ label{
     font-weight: 700;
 }
 
-form button{
+#enviar{
     display: flex;
     justify-content: center;
     align-items: center;

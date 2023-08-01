@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/adm/header.css">
     <link rel="stylesheet" href="../css/adm/main.css">
+    <link rel="stylesheet" href="../css/adm/modal_require-fields.css">
+    <link rel="stylesheet" href="../css/adm/modal_confirmation-password.css">
+    <link rel="stylesheet" href="../css/adm/modal_password-incorrect.css">
 
     <script src="https://kit.fontawesome.com/cb4f3aa626.js" crossorigin="anonymous"></script>
     <script type="module" defer src="../js/adm/password.js"></script>
@@ -27,8 +30,8 @@
                     <i class="fa-solid fa-user"></i>
                     <div class="usuario__dados">
                         <div class="linha1">
-                            <span>Lojista,</span>
-                            <span>Luiz Gustavo</span>
+                            <span>Administrador,</span>
+                            <span id="spanUser"></span>
                         </div>
                         <input type="password" value="152930" readonly class="password__input" disabled>
                     </div>
@@ -41,7 +44,7 @@
             <form action="#">
                 <div class="group__password">
                     <div class="form__password">
-                        <label for="password">Senha antiga:</label>
+                        <label for="password">Senha atual:</label>
                         <div class="password">
                             <input type="password" name="password" id="input-password-old" maxlength="40">
                             <i class="fa-solid fa-eye" id="icon-old"></i>
@@ -63,10 +66,34 @@
                     </div>
                 </div>
 
-                <button type="submit" onclick=""> Enviar </button>
+                <a href="#" id="enviar"> Enviar </a>
             </form>
         </section>
     </main>
+
+    <!-- MODAL REQUIRE FIELDS CURSOS -->
+    <div class="modal__require-fields" id="modal__require-fields">
+        <div class="modal__require-fields--content" id="modal__require-fields--content">
+            <p class="nome__modal--require-fields">ERRO!! TEM QUE DIGITAR TODOS OS CAMPOS</p>
+            <a href="#" class="modal__require-fields--close" id="sair">&times;</a>
+        </div>
+    </div>
+
+    <!-- MODAL CONFIRMATION PASSWORD CURSOS -->
+    <div class="modal__confirmation-password" id="modal__confirmation-password">
+        <div class="modal__confirmation-password--content" id="modal__confirmation-password--content">
+            <p class="nome__modal--confirmation-password">ERRO!! A SENHA DE CONFIRMAÇÃO TEM QUE SER IDENTICA COM A DA NOVA SENHA</p>
+            <a href="#" class="modal__confirmation-password--close" id="sair">&times;</a>
+        </div>
+    </div>
+
+    <!-- MODAL PASSWORD INCORRECT CURSOS -->
+    <div class="modal__password-incorrect" id="modal__password-incorrect">
+        <div class="modal__password-incorrect--content" id="modal__password-incorrect--content">
+            <p class="nome__modal--password-incorrect">ERRO!! A SENHA ATUAL ESTÁ INCORRETA</p>
+            <a href="#" class="modal__password-incorrect--close" id="sair">&times;</a>
+        </div>
+    </div>
 </body>
 
 </html>

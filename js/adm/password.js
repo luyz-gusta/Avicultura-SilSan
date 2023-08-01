@@ -1,5 +1,13 @@
 'use strict'
 
+import { getUsuario, updateUsuario } from "./api.js"
+
+const email = localStorage.getItem('email')
+const nameUser = email.split('@adm.com')
+
+const idUsuario = localStorage.getItem('id')
+const dadosUsuario = await getUsuario(idUsuario)
+
 const showPasswordOld = () => {
     let icon = document.getElementById('icon-old')
     let input = document.getElementById('input-password-old')
@@ -45,12 +53,6 @@ const showPasswordConfirmation = () => {
 }
 document.getElementById('icon-confirmation').addEventListener('click', showPasswordConfirmation)
 
-
-const enviarSenha = async () => {
-    let inputSenha
-
-}
-
 document.getElementById('exit').addEventListener('click', () => {
     localStorage.setItem('id', '')
     localStorage.setItem('email', '')
@@ -59,6 +61,59 @@ document.getElementById('exit').addEventListener('click', () => {
 })
 
 
+const enviarSenha = async () => {
+    let inputSenhaAntiga = document.getElementById('input-password-old')
+    let inputSenhaNova = document.getElementById('input-password-new')
+    let inputSenhaConfirmacao = document.getElementById('input-password-confirmation')
+
+    if (
+        inputSenhaAntiga.value == '' || inputSenhaAntiga.value == null || inputSenhaAntiga.value == undefined ||
+        inputSenhaNova.value == '' || inputSenhaNova.value == null || inputSenhaNova.value == undefined ||
+        inputSenhaConfirmacao.value == '' || inputSenhaConfirmacao == null || inputSenhaConfirmacao.value == undefined
+    ) {
+        let abrirModal = document.getElementById('modal__require-fields')
+
+        abrirModal.classList.add('open-require-fields')
+        document.querySelector('.modal__require-fields--close').addEventListener('click', () => {
+            abrirModal.classList.remove('open-require-fields')
+        })
+    } else {
+        if (inputSenhaAntiga.value == dadosUsuario.usuarios[0].senha) {
+            if (inputSenhaNova.value == inputSenhaConfirmacao.value) {
+                let jsonUpdate = {
+                    email: dadosUsuario.usuarios[0].email,
+                    senha: inputSenhaNova.value,
+                    id_status_usuario: 1
+                }
+
+                let updateAdm = await updateUsuario(jsonUpdate, idUsuario)
+                console.log(updateAdm);
+            } else {
+                let abrirModal = document.getElementById('modal__confirmation-password')
+
+                abrirModal.classList.add('open-confirmation-password')
+                document.querySelector('.modal__confirmation-password--close').addEventListener('click', () => {
+                    abrirModal.classList.remove('open-confirmation-password')
+                })
+            }
+        } else {
+            let abrirModal = document.getElementById('modal__password-incorrect')
+
+            abrirModal.classList.add('open-password-incorrect')
+            document.querySelector('.modal__password-incorrect--close').addEventListener('click', () => {
+                abrirModal.classList.remove('open-password-incorrect')
+            })
+        }
+    }
+}
+
+document.getElementById('enviar').addEventListener('click', enviarSenha)
+
+const card = () => {
+    const nomeUsuario = document.getElementById('spanUser')
+    nomeUsuario.textContent = nameUser[0]
+}
+card()
 
 
 
