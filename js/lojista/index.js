@@ -1,6 +1,6 @@
 'use strict'
 
-import { createProduto, getProdutos, getTipoProduto, deleteProduto } from "./api.js"
+import { createProduto, getProdutos, getTipoProduto, deleteProduto, updateProduto } from "./api.js"
 
 document.getElementById('nome_usuario').textContent = localStorage.getItem('nome')
 var produtos = await getProdutos()
@@ -49,25 +49,36 @@ const criarProdutos = (produto) => {
     icone_editar.classList.add('fas')
     icone_editar.classList.add('fa-edit')
 
-    icone_editar.addEventListener('click', () => {
+    icone_editar.addEventListener('click', async () => {
         localStorage.setItem('updateProduto', produto.id)
 
         let abrirModal = document.getElementById('modal__editar')
 
         abrirModal.classList.add('open-modal')
-        document.getElementById('myInputNomeEditar').value = produto.nome
-        document.getElementById('myInputPesoEditar').value = produto.peso
-        document.getElementById('myInputPrecoEditar').value = produto.preco_original
-        document.getElementById('myInputPrecoDescontoEditar').value = produto.preco_desconto
-        document.getElementById('codigoGeradoEditar').value = produto.cupom
-        document.getElementById('myInputDescricaoEditar').value = produto.descricao
-        document.getElementById('tiposEditar').value = produto.tipo
-        document.getElementById('myInputUrlEditar').value = produto.url
+        let nome = document.getElementById('myInputNomeEditar').value = produto.nome
+        let peso = document.getElementById('myInputPesoEditar').value = produto.peso
+        let precoOriginal = document.getElementById('myInputPrecoEditar').value = produto.preco_original
+        let precoDesconto = document.getElementById('myInputPrecoDescontoEditar').value = produto.preco_desconto
+        let cupom = document.getElementById('codigoGeradoEditar').value = produto.cupom
+        let descricao = document.getElementById('myInputDescricaoEditar').value = produto.descricao
+        let urlImagem = document.getElementById('myInputUrlEditar').value = produto.url
 
+        console.log(precoDesconto);
+
+        const select = document.querySelector('#tiposEditar')
+        select.addEventListener('change', () => {
+            localStorage.setItem('tipo', select.options[select.selectedIndex].id)
+        })
+        const cardsJSON = await tiposProdutos.tipos.map(criarTipoProduto)
+        select.replaceChildren(...cardsJSON)
+
+        let tipoProduto = document.getElementById('tiposEditar').value = produto.tipo
 
         document.querySelector('.modal__editar--close').addEventListener('click', () => {
             abrirModal.classList.remove('open-modal')
         })
+
+        document.getElementById('salvarBtnEditar').addEventListener('click', atualizarProduto)
     })
 
     const deletar = document.createElement('div')
@@ -175,6 +186,56 @@ const criarNovoProduto = async () => {
     }
 }
 
+const atualizarProduto = async () => {
+    let id = localStorage.getItem('updateProduto')
+    let nome = document.getElementById('myInputNomeEditar').value
+    let peso = document.getElementById('myInputPesoEditar').value 
+    let precoOriginal = document.getElementById('myInputPrecoEditar').value 
+    let precoDesconto = document.getElementById('myInputPrecoDescontoEditar').value
+    let cupom = document.getElementById('codigoGeradoEditar').value 
+    let descricao = document.getElementById('myInputDescricaoEditar').value 
+    let urlImagem = document.getElementById('myInputUrlEditar').value 
+
+    const select = document.querySelector('#tiposEditar')
+    select.addEventListener('change', () => {
+        localStorage.setItem('tipo', select.options[select.selectedIndex].id)
+    })
+    const cardsJSON = await tiposProdutos.tipos.map(criarTipoProduto)
+    select.replaceChildren(...cardsJSON)
+
+    let tipoProduto = localStorage.getItem('tipo')
+
+    if (
+        id == '' || isNaN(id) ||
+        nome == '' || nome == null || peso == '' || peso == null ||
+        precoOriginal == '' || precoOriginal == null || precoDesconto == '' || precoDesconto == null ||
+        cupom == '' || cupom == null || descricao == '' || descricao == null ||
+        urlImagem == '' || urlImagem == null
+    ) {
+        let abrirModalErro = document.getElementById('modal__deletar')
+        abrirModalErro.classList.add('open-erro')
+        document.querySelector('.modal__deletar--close').addEventListener('click', () => {
+            abrirModalErro.classList.remove('open-erro')
+        })
+    } else {
+        let jsonProduto = {
+            id: id,
+            nome: nome,
+            descricao: descricao,
+            peso: parseFloat(peso),
+            cupom: cupom,
+            url: urlImagem,
+            preco_original: parseFloat(precoOriginal),
+            preco_desconto: parseFloat(precoDesconto),
+            id_tipo_produto: parseFloat(tipoProduto)
+        }
+
+        console.log(jsonProduto)
+
+        await updateProduto(jsonProduto)
+    }
+}
+
 const openModal = () => {
     let abrirModal = document.getElementById('modal__adicionar')
 
@@ -187,3 +248,4 @@ const openModal = () => {
 document.getElementById('openModal').addEventListener('click', openModal)
 
 document.getElementById('salvarBtn').addEventListener('click', criarNovoProduto)
+
