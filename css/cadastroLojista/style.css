@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Dongle:wght@300;400;700&display=swap');
+
+body{
+    background-image: url(../../imgs/login/fundo2.webp) ;
+    background-position: center;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+header{
+    height: 10vh;
+    width: 100vw;
+}
+
+.text{
+    font-family: 'Anton', sans-serif;
+    font-family: 'Dongle', sans-serif;
+    color: white;
+}
+
+.nome__empresa{
+    font-size: clamp(3rem, 0.6rem + 6vw, 6rem);
+}
+
+.slogan__empresa{
+    width: clamp(10rem, 2rem + 20vw, 20rem);
+    font-size: clamp(2.5rem, 0.5rem + 5vw, 5rem);
+}
+
+.text__empresa{
+    font-size: 2rem;
+}
+
+.box{
+    background-image: url(../../imgs/login/fundo2.webp) ;
+    background-position: center;
+    background-size: cover;
+    width: 75vw;
+    height: 65vh;
+    border-radius: 15px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+} 
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 90vh;
+}
+
+.col_left{
+    height: 65vh;
+    padding: 15px;
+    grid-column: 1;
+}
+
+.col_right{
+    height: 65vh;
+    grid-column: 2;
+}
+
+.social-icon{
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+i{
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    transition: .10s ease;
+}
+
+@media (max-width: 768px){
+    .container{
+        align-items: flex-start;
+    }
+
+    .box{
+        grid-template-columns: 100%;
+        grid-template-rows: 50% 50%;
+        height: 75vh;
+    }
+
+    .col_left{
+        height: 50vh;
+        grid-column: 1;
+        grid-row: 1;
+        gap: 5px;
+    }
+    
+    .col_right{
+        height: 50vh;
+        grid-column: 1;
+        grid-row: 2;
+    }
+}
+
+@media (max-width: 500px){
+    .box{
+        width: 80vw;
+        height: 85vh;
+    }
+    .col_left{
+        display: none;
+    }
+}
