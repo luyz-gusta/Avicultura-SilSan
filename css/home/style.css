@@ -63,7 +63,7 @@ nav {
 }
 
 #subscription-form {
-    background-color: var(--secundary);
+    background-color: #fff8;
     padding: 5em;
     max-width: 22%;
     display: flex;
@@ -120,7 +120,7 @@ nav {
 }
 
 #key-benefits h2 {
-    background-color: var(--secundary);
+    background-color: #fff;
     text-align: center;
     padding: 2em;
     font-weight: 500;
