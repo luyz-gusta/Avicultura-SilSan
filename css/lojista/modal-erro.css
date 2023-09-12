@@ -1,5 +1,10 @@
-/* MODEL DELETAR */
-.modal__deletar {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.modal-erro__dados {
     visibility: hidden;
     opacity: 0;
     position: absolute;
@@ -15,28 +20,15 @@
     line-height: 2.5rem;
 }
 
-.nome__modal--deletar {
-    color: #074A71;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 2rem;
-    text-align: center;
-    padding-top: 25px;
-}
-
-.modal__deletar:target {
+.modal-adicionar:target {
     visibility: visible;
     opacity: 1;
 }
 
-.open-erro{
-    visibility: visible;
-    opacity: 1;
-    z-index: 1;
-}
-
-.modal__deletar--content {
-    font-family: 'Montserrat';
+.modal-erro__dados__content {
+    min-width: 35%;
+    min-height: 10%;
+    font-family: 'Montserrat', sans-serif;
     border-radius: 4px;
     position: relative;
     max-width: 90%;
@@ -44,29 +36,27 @@
     padding: 1em 2em;
     display: flex;
     flex-direction: column;
-    gap: 30px;
-}
-
-.modal__deletar--footer {
-    display: flex;
-    justify-content: center;
     gap: 20px;
+    padding-top: 30px;
 }
 
-.modal__deletar--footer a {
-    font-size: 1.3rem;
-    padding: 10px 25px;
-    background-color: #3084B4;
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.modal__deletar--close {
+.modal-erro__dados__close {
     position: absolute;
     top: 0px;
     right: 10px;
     color: #585858;
     text-decoration: none;
     font-size: 3rem;
+}
+
+.text-erro{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #FF5C00;
+}
+
+.open-modal {
+    visibility: visible;
+    opacity: 1;
 }

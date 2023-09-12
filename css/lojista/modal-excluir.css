@@ -1,5 +1,5 @@
 /* MODEL DELETAR */
-.modal__deletar__produto {
+.modal-deletar {
     visibility: hidden;
     opacity: 0;
     position: absolute;
@@ -15,27 +15,15 @@
     line-height: 2.5rem;
 }
 
-.open__modal-delete{
+.modal-deletar:target {
     visibility: visible;
     opacity: 1;
 }
 
-.nome__modal--deletarr__produto {
-    color: #074A71;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 2rem;
-    text-align: center;
-    padding-top: 25px;
-}
-
-.modal__deletarr__produto:target {
-    visibility: visible;
-    opacity: 1;
-}
-
-.modal__deletar--content__produto {
-    font-family: 'Montserrat';
+.modal-deletar__content {
+    min-width: 35%;
+    min-height: 10%;
+    font-family: 'Montserrat', sans-serif;
     border-radius: 4px;
     position: relative;
     max-width: 90%;
@@ -43,29 +31,70 @@
     padding: 1em 2em;
     display: flex;
     flex-direction: column;
-    gap: 30px;
-}
-
-.modal__deletar--footerr__produto {
-    display: flex;
-    justify-content: center;
     gap: 20px;
 }
 
-.modal__deletar--footerr__produto a {
-    font-size: 1.3rem;
-    padding: 10px 25px;
-    background-color: #3084B4;
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
+.open-modal {
+    visibility: visible;
+    opacity: 1;
 }
 
-.modal__deletar--closer__produto {
+.text-deletar{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #FF5C00;
+}
+
+.modal-deletar__footer{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.modal-deletar__close{
     position: absolute;
     top: 0px;
     right: 10px;
     color: #585858;
     text-decoration: none;
     font-size: 3rem;
+}
+
+#naoDeletar{
+    cursor: pointer;
+    width: 66px;
+    height: 34px;
+    border-radius: 4px;
+    background: rgba(253, 122, 5, 0.72);
+    color: #fff;
+    border: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 500;
+}
+
+#deletar{
+    cursor: pointer;
+    width: 66px;
+    height: 34px;
+    border-radius: 4px;
+    background: #FF5C00;
+    color: #fff;
+    border: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 500;
 }

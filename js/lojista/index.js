@@ -49,10 +49,10 @@ const criarProdutos = (produto) => {
     icone_editar.classList.add('fas')
     icone_editar.classList.add('fa-edit')
 
-    icone_editar.addEventListener('click', async () => {
+    editar.addEventListener('click', async () => {
         localStorage.setItem('updateProduto', produto.id)
 
-        let abrirModal = document.getElementById('modal__editar')
+        let abrirModal = document.getElementById('modal-editar')
 
         abrirModal.classList.add('open-modal')
         let nome = document.getElementById('myInputNomeEditar').value = produto.nome
@@ -73,7 +73,7 @@ const criarProdutos = (produto) => {
 
         let tipoProduto = document.getElementById('tiposEditar').value = produto.tipo
 
-        document.querySelector('.modal__editar--close').addEventListener('click', () => {
+        document.querySelector('.modal-editar__close').addEventListener('click', () => {
             abrirModal.classList.remove('open-modal')
         })
 
@@ -88,21 +88,21 @@ const criarProdutos = (produto) => {
     icone_deletar.classList.add('fa-trash')
 
     deletar.addEventListener('click', () => {
-        let abrirModalDelete = document.getElementById('modal__deletar__produto')
+        let abrirModalDelete = document.getElementById('modal-deletar')
 
-        abrirModalDelete.classList.add('open__modal-delete')
+        abrirModalDelete.classList.add('open-modal')
         console.log(abrirModalDelete);
-        document.querySelector('.modal__deletar--closer__produto').addEventListener('click', () => {
-            abrirModalDelete.classList.remove('open__modal-delete')
+        document.querySelector('.modal-deletar__closer').addEventListener('click', () => {
+            abrirModalDelete.classList.remove('open-modal')
         })
 
         document.getElementById('deletar').addEventListener('click', async () => {
             await deleteProduto(produto.id)
-            abrirModalDelete.classList.remove('open__modal-delete')
+            abrirModalDelete.classList.remove('open-modal')
         })
 
         document.getElementById('naoDeletar').addEventListener('click', async () => {
-            abrirModalDelete.classList.remove('open__modal-delete')
+            abrirModalDelete.classList.remove('open-modal')
         })
     })
 
@@ -162,10 +162,12 @@ const criarNovoProduto = async () => {
         cupom == '' || cupom == null || descricao == '' || descricao == null ||
         urlImagem == '' || urlImagem == null
     ) {
-        let abrirModalErro = document.getElementById('modal__deletar')
-        abrirModalErro.classList.add('open-erro')
-        document.querySelector('.modal__deletar--close').addEventListener('click', () => {
-            abrirModalErro.classList.remove('open-erro')
+        let abrirModal = document.getElementById('modal-erro__dados')
+
+        abrirModal.classList.add('open-modal')
+
+        document.querySelector('#sair').addEventListener('click', () => {
+            abrirModal.classList.remove('open-modal')
         })
     } else {
         let jsonProduto = {
@@ -179,7 +181,7 @@ const criarNovoProduto = async () => {
             id_tipo_produto: parseFloat(tipoProduto)
         }
 
-        let abrirModal = document.getElementById('modal__adicionar')
+        let abrirModal = document.getElementById('modal-adicionar')
         abrirModal.classList.remove('open-modal')
         let inserirProduto = await createProduto(jsonProduto)
     }
@@ -188,12 +190,12 @@ const criarNovoProduto = async () => {
 const atualizarProduto = async () => {
     let id = localStorage.getItem('updateProduto')
     let nome = document.getElementById('myInputNomeEditar').value
-    let peso = document.getElementById('myInputPesoEditar').value 
-    let precoOriginal = document.getElementById('myInputPrecoEditar').value 
+    let peso = document.getElementById('myInputPesoEditar').value
+    let precoOriginal = document.getElementById('myInputPrecoEditar').value
     let precoDesconto = document.getElementById('myInputPrecoDescontoEditar').value
-    let cupom = document.getElementById('codigoGeradoEditar').value 
-    let descricao = document.getElementById('myInputDescricaoEditar').value 
-    let urlImagem = document.getElementById('myInputUrlEditar').value 
+    let cupom = document.getElementById('codigoGeradoEditar').value
+    let descricao = document.getElementById('myInputDescricaoEditar').value
+    let urlImagem = document.getElementById('myInputUrlEditar').value
 
     const select = document.querySelector('#tiposEditar')
     select.addEventListener('change', () => {
@@ -211,10 +213,12 @@ const atualizarProduto = async () => {
         cupom == '' || cupom == null || descricao == '' || descricao == null ||
         urlImagem == '' || urlImagem == null
     ) {
-        let abrirModalErro = document.getElementById('modal__deletar')
-        abrirModalErro.classList.add('open-erro')
-        document.querySelector('.modal__deletar--close').addEventListener('click', () => {
-            abrirModalErro.classList.remove('open-erro')
+        let abrirModal = document.getElementById('modal-erro__dados')
+
+        abrirModal.classList.add('open-modal')
+
+        document.querySelector('#sair').addEventListener('click', () => {
+            abrirModal.classList.remove('open-modal')
         })
     } else {
         let jsonProduto = {
@@ -233,16 +237,18 @@ const atualizarProduto = async () => {
     }
 }
 
-const openModal = () => {
-    let abrirModal = document.getElementById('modal__adicionar')
+const openModalAdd = async () => {
+    let abrirModal = document.getElementById('modal-adicionar')
 
     abrirModal.classList.add('open-modal')
-    document.querySelector('.modal__adicionar--close').addEventListener('click', () => {
+
+    document.querySelector('.modal-dicionar__close').addEventListener('click', () => {
         abrirModal.classList.remove('open-modal')
     })
 }
 
-document.getElementById('openModal').addEventListener('click', openModal)
+
+document.getElementById('open').addEventListener('click', openModalAdd)
 
 document.getElementById('salvarBtn').addEventListener('click', criarNovoProduto)
 
