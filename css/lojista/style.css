@@ -35,7 +35,7 @@ header {
 }
 
 body{
-    overflow-y: auto;
+    overflow-y: hidden;
 }
 
 main {

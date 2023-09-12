@@ -63,12 +63,11 @@ const criarProdutos = (produto) => {
         let descricao = document.getElementById('myInputDescricaoEditar').value = produto.descricao
         let urlImagem = document.getElementById('myInputUrlEditar').value = produto.url
 
-        console.log(precoDesconto);
-
         const select = document.querySelector('#tiposEditar')
         select.addEventListener('change', () => {
             localStorage.setItem('tipo', select.options[select.selectedIndex].id)
         })
+
         const cardsJSON = await tiposProdutos.tipos.map(criarTipoProduto)
         select.replaceChildren(...cardsJSON)
 
@@ -229,8 +228,6 @@ const atualizarProduto = async () => {
             preco_desconto: parseFloat(precoDesconto),
             id_tipo_produto: parseFloat(tipoProduto)
         }
-
-        console.log(jsonProduto)
 
         await updateProduto(jsonProduto)
     }

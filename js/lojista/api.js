@@ -44,26 +44,26 @@ export const createProduto = async (produto) => {
 export const updateProduto = async (produto) => {
     const url = `https://avicultura-silsa-api.cyclic.app/v1/avicultura-silsan/produto/${produto.id}`;
     const options = {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(produto)
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(produto)
     };
-  
+
     fetch(url, options)
-    .then(response => {
-      if (response.ok) {
-        location.reload();
-      } else {
-        console.log('Erro ao atualizar o produto.');
-      }
-    })
-    .catch(error => {
-      console.log('Ocorreu um erro na requisição:', error);
-    });
-  
-  }
+        .then(response => {
+            if (response.ok) {
+                location.reload();
+            } else {
+                console.log('Erro ao atualizar o produto.');
+            }
+        })
+        .catch(error => {
+            console.log('Ocorreu um erro na requisição:', error);
+        });
+
+}
 
 export const deleteProduto = async (id) => {
     const url = `https://avicultura-silsa-api.cyclic.app/v1/avicultura-silsan/produto/${id}`;
