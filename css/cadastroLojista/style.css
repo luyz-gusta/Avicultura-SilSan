@@ -10,6 +10,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    overflow: hidden;
 }
 
 header {
@@ -30,6 +31,7 @@ header {
     width: 100%;
     text-align: center;
     font-size: clamp(3rem, 0.6rem + 6vw, 6rem);
+    height: clamp(3rem, 0.6rem + 6vw, 6rem);
 }
 
 .slogan__empresa {
@@ -90,7 +92,7 @@ header {
     background: orangered;
     height: 45px;
     font-size: 32px;
-    width: 200px;
+    width: 60%;
     border-radius: 4px;
     box-shadow: #fff;
     cursor: pointer;
