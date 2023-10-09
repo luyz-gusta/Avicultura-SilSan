@@ -64,6 +64,18 @@ const goPaginaProduto = async () => {
     }
 }
 
+document.getElementById('iconPassword').addEventListener('click', () => {
+    let icon = document.getElementById('iconPassword')
+    let input = document.getElementById('password')
 
+    if(icon.getAttribute('name') == 'eye-outline'){
+        icon.setAttribute('name', 'eye-off-outline')
+        input.type = 'text'
+    }else{
+        icon.setAttribute('name', 'eye-outline')
+        input.type = 'password'
+    }
+
+})
 
 document.getElementById('btn-enviar').addEventListener('click', goPaginaProduto)

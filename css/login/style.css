@@ -24,6 +24,9 @@ body {
 
 }
 
+#iconPassword{
+    font-size: 28px;
+}
 
 .header {
     position: fixed;
