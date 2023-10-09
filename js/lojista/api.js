@@ -19,6 +19,8 @@ export const getTipoProduto = async () => {
 export const createProduto = async (produto) => {
     const url = `https://avicultura-silsa-api.cyclic.app/v1/avicultura-silsan/produto`
 
+    console.log(produto)
+
     const options = {
         method: 'POST',
         headers: {
