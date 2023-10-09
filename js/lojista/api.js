@@ -32,6 +32,8 @@ export const createProduto = async (produto) => {
             if (response.ok) {
                 location.reload();
             } else {
+                console.log(response);
+                console.log(response.body);
                 alert('Erro ao criar a produto confira os valores')
                 console.log('Erro ao criar a produto.');
             }

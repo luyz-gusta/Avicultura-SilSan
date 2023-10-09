@@ -92,7 +92,7 @@ const criarProdutos = (produto) => {
 
         abrirModalDelete.classList.add('open-modal')
         console.log(abrirModalDelete);
-        document.querySelector('.modal-deletar__closer').addEventListener('click', () => {
+        document.querySelector('.modal-deletar__close').addEventListener('click', () => {
             abrirModalDelete.classList.remove('open-modal')
         })
 
