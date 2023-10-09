@@ -2,6 +2,8 @@
 
 import { getUsuarioLogin } from "./api.js"
 
+const input = document.getElementById('password')
+
 const goPaginaProduto = async () => {
     let email = document.getElementById('email').value
     let password = document.getElementById('password').value
@@ -66,7 +68,6 @@ const goPaginaProduto = async () => {
 
 document.getElementById('iconPassword').addEventListener('click', () => {
     let icon = document.getElementById('iconPassword')
-    let input = document.getElementById('password')
 
     if(icon.getAttribute('name') == 'eye-outline'){
         icon.setAttribute('name', 'eye-off-outline')
@@ -76,6 +77,13 @@ document.getElementById('iconPassword').addEventListener('click', () => {
         input.type = 'password'
     }
 
+})
+
+input.addEventListener("keydown", (event) => {
+    
+    if(event.keyCode === 13){
+        goPaginaProduto()
+    }
 })
 
 document.getElementById('btn-enviar').addEventListener('click', goPaginaProduto)
