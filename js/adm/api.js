@@ -24,14 +24,13 @@ export const updateUsuario = async (jsonUsuario, idUsuario) => {
         .then(response => {
             console.log(response);
             if (response.ok) {
-                //location.reload();
+                location.reload();
             } else {
-                console.log('Erro ao criar o curso.');
+                console.log('Erro ao trocar senha');
             }
             return response.status
         })
         .catch(error => {
             console.log('Ocorreu um erro na requisição:', error);
         });
-
 }

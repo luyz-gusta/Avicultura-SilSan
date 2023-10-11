@@ -87,7 +87,6 @@ const enviarSenha = async () => {
                 }
 
                 let updateAdm = await updateUsuario(jsonUpdate, idUsuario)
-                console.log(updateAdm);
             } else {
                 let abrirModal = document.getElementById('modal__confirmation-password')
 
