@@ -45,7 +45,7 @@ const goPaginaProduto = async () => {
             } else {
                 console.log('error de usuario');
             }
-            //window.location.href = "https://projeto-lion-school-2023-front.vercel.app"
+            
         } else if (result.status == 400) {
             let abrirModal = document.getElementById('modal__email-incorreto')
 
