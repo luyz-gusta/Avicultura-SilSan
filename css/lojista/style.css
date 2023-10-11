@@ -159,6 +159,13 @@ nav {
     font-weight: 700;
 }
 
+.imagem_produto{
+    max-width: 230px;
+    max-height: 230px;;
+    width: auto;
+    height: auto;
+}
+
 
 
 /* MODEL ADICIONAR */

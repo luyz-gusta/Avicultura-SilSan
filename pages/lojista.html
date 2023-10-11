@@ -37,9 +37,43 @@
 
             var isNumberValid = /^\d+(?:\.\d{1,2})?$/.test(inputElement.value);
             if (!isNumberValid) {
-                inputElement.parentNode.parentNode.style.backgroundColor = 'transparent';
+                inputElement.parentNode.parentNode.style.border = 'red';
             }
-        } 
+        }
+        function regraInput(inputElement, maxCasasDecimais) {
+            var value = inputElement.value;
+
+            // Substituir vírgula por ponto (caso o usuário utilize vírgula como separador)
+            value = value.replace(',', '.');
+
+            // Verifique se há um ponto decimal e, se não houver, adicione .00
+            // if (value.indexOf('.') === -1) {
+            //     value += '.00';
+            // }
+
+            // Verificar se há um ponto decimal
+            var parts = value.split('.');
+
+            // if (parts.length === 2 && parts[1].length > maxCasasDecimais) {
+            //     // Se houver mais de duas casas decimais, remova os caracteres extras
+            //     parts[1] = parts[1].substring(0, maxCasasDecimais);
+            //     // Reatribua o valor formatado ao campo de entrada
+            //     inputElement.value = parts.join('.');
+            // }
+
+            if (parts.length === 2) {
+                // Adicionar um zero após o ponto decimal se houver apenas um dígito
+                // if (parts[1].length === 1) {
+                //     parts[1] = parts[1] + '0';
+                // }
+                // Se houver mais de duas casas decimais, remova os caracteres extras
+                if (parts[1].length > maxCasasDecimais) {
+                    parts[1] = parts[1].substring(0, maxCasasDecimais);
+                }
+                // Reatribua o valor formatado ao campo de entrada
+                inputElement.value = parts.join('.');
+            }
+        }
     </script>
 
 
@@ -109,10 +143,10 @@
                 <div class="precos">
                     <input type="number" name="valor" class="inputModal inputPreco" id="myInputPreco" required
                         placeholder="Preço Original" min="0" step="0.01" title="Currency" pattern="^\d+(?:\.\d{1,2})?$"
-                        onblur="validateInput(this)">
+                        onblur="validateInput(this)" oninput="regraInput(this, 2)">
                     <input type="number" name="valor_desconto" class="inputModal inputPreco" id="myInputPrecoDesconto"
                         required placeholder="Preço com Desconto" min="0" step="0.01" title="Currency"
-                        pattern="^\d+(?:\.\d{1,2})?$" onblur="validateInput(this)">
+                        pattern="^\d+(?:\.\d{1,2})?$" onblur="validateInput(this)" oninput="regraInput(this, 2)">
                 </div>
                 <div class="precos">
                     <div class="input-cupom">
@@ -164,10 +198,11 @@
                 <div class="precos">
                     <input type="number" name="valor" class="inputModal inputPreco" id="myInputPrecoEditar" required
                         placeholder="Preço Original" min="0" step="0.01" title="Currency" pattern="^\d+(?:\.\d{1,2})?$"
-                        onblur="validateInput(this)">
+                        onblur="validateInput(this)" oninput="regraInput(this, 2)">
                     <input type="number" name="valor_desconto" class="inputModal inputPreco"
                         id="myInputPrecoDescontoEditar" required placeholder="Preço com Desconto" min="0" step="0.01"
-                        title="Currency" pattern="^\d+(?:\.\d{1,2})?$" onblur="validateInput(this)">
+                        title="Currency" pattern="^\d+(?:\.\d{1,2})?$" onblur="validateInput(this)"
+                        oninput="regraInput(this, 2)">
                 </div>
                 <div class="precos">
                     <div class="input-cupom">

@@ -15,6 +15,7 @@ const criarProdutos = (produto) => {
     const imagem_produto = document.createElement('img')
     imagem_produto.src = produto.url
     imagem_produto.alt = produto.descricao
+    imagem_produto.classList.add('imagem_produto')
 
     const nome_produto = document.createElement('div')
     nome_produto.classList.add('descricao')
@@ -170,6 +171,34 @@ const criarNovoProduto = async () => {
             abrirModal.classList.remove('open-modal')
         })
     } else {
+        console.log(precoOriginal.indexOf('.'));
+
+        if(precoOriginal.indexOf('.') === -1){
+            precoOriginal+= '.00'
+            console.log('teste' + precoOriginal);
+        }
+
+        if(precoDesconto.indexOf('.') === -1){
+            precoDesconto+= '.00'
+            console.log('teste' + precoDesconto);
+        }
+
+        let partsOriginal = precoOriginal.split('.');
+        let partsDesconto = precoDesconto.split('.');
+
+        if(partsDesconto[1].length === 1){
+            partsDesconto[1] = partsDesconto[1] + '0';
+            precoDesconto = partsDesconto.join('.')
+            console.log(precoDesconto);
+        }
+
+        if(partsOriginal[1].length === 1){
+            partsOriginal[1] = partsOriginal[1] + '0';
+            precoOriginal = partsOriginal.join('.')
+            console.log(precoOriginal);
+        }
+        
+
         let jsonProduto = {
             nome: nome,
             descricao: descricao,
@@ -182,8 +211,8 @@ const criarNovoProduto = async () => {
         }
 
         let abrirModal = document.getElementById('modal-adicionar')
-        abrirModal.classList.remove('open-modal')
-        let inserirProduto = await createProduto(jsonProduto)
+       // abrirModal.classList.remove('open-modal')
+       // let inserirProduto = await createProduto(jsonProduto)
     }
 }
 
