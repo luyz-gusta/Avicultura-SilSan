@@ -15,6 +15,7 @@ export const createLojistaUsuario = async (lojista) => {
         .then(response => {
             if (response.ok) {
                 location.reload();
+                window.location.href = '../pages/adm.html'
             } else {
                 alert('Erro ao criar a o usuario do lijista confira os valores')
                 console.log('Erro ao criar lojista.');

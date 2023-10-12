@@ -49,7 +49,7 @@ header {
     background-size: cover;
     width: 75vw;
     height: 65vh;
-    gap: 30px;
+    gap: 60px;
     border-radius: 15px;
     display: grid;
     grid-template-columns: 50% 50%;
@@ -58,12 +58,22 @@ header {
     align-items: center;
 }
 
+.div__button{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 .container {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100vw;
     height: 90vh;
+}
+
+.password{
+    color: #fff
 }
 
 .container__forms {
@@ -92,10 +102,18 @@ header {
     background: orangered;
     height: 45px;
     font-size: 32px;
-    width: 60%;
+    width: 30%;
     border-radius: 4px;
     box-shadow: #fff;
     cursor: pointer;
+    color: #fff;
+}
+
+.icon {
+    position: relative;
+    top: 60px;
+    left: 340px;
+    font-size: 25px;
     color: #fff;
 }
 
@@ -103,6 +121,27 @@ i {
     color: #fff;
     font-size: 30px;
 }
+
+@media (max-width: 1500px) {
+    .icon {
+        position: relative;
+        top: 60px;
+        left: 230px;
+        font-size: 25px;
+        color: #fff;
+    }
+}
+
+@media (max-width: 1200px) {
+    .icon {
+        position: relative;
+        top: 60px;
+        left: 150px;
+        font-size: 25px;
+        color: #fff;
+    }
+}
+
 
 
 @media (max-width: 768px) {

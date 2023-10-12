@@ -27,6 +27,7 @@
 
 <body>
 
+
   <div class="container">
     <div class="box">
       <h1 class="text nome__empresa">Cadastro de Lojista</h1>
@@ -55,25 +56,51 @@
         </form>
         <form class="form_right">
           <div class="group">
-            <input type="password" name="senha" id="inputSenha" required>
+            <span class="icon"><ion-icon name="eye-outline" id="iconPassword"></ion-icon></span>
+            <input type="password" name="senha" id="inputSenha" required class="password">
             <span class="highlight"></span>
             <span class="bar"></span>
             <label for="senha">Senha</label>
           </div>
 
           <div class="group">
-            <input type="password" name="confirmeSenha" id="inputConfirmeSenha" required>
+            <span class="icon"><ion-icon name="eye-outline" id="iconPasswordConfirm"></ion-icon></span>
+            <input type="password" name="confirmeSenha" id="inputConfirmeSenha" required class="password">
             <span class="highlight"></span>
             <span class="bar"></span>
             <label for="confirmeSenha">Confirme a senha</label>
           </div>
 
-          <button type="submit" id="btn-enviar">Confirmar</button>
         </form>
       </div>
-      
+      <div class="div__button"><button type="submit" id="btn-enviar">Confirmar</button></div>
+
     </div>
   </div>
+
+  <script>
+    const telefoneInput = document.getElementById('inputTelefone');
+
+    telefoneInput.addEventListener('input', function () {
+      let value = telefoneInput.value.replace(/\D/g, '');
+      if (value.length > 11) {
+        value = value.slice(0, 11 );
+      }
+
+      if (value.length > 2) {
+        value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+      }
+
+      if (value.length > 6) {
+        value = `${value.slice(0, 6)}-${value.slice(6)}`;
+      }
+
+      telefoneInput.value = value;
+    });
+  </script>
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

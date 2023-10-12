@@ -58,18 +58,48 @@ document.getElementById('btn-enviar').addEventListener('click', async (event) =>
         alert('Require Fields')
     } else if (senha != confirmacaoSenha) {
         alert('confirmacao de senha diferente da senha')
-    } else if (telefone.lenth > 12) {
-        alert('telefone digitado incorretamente')
+    } else if (senha < 8) {
+        alert('senha tem que ter no minimo 8 digitos')
     } else {
+        const telefoneMask= telefone.replace(/\D/g, '');
+
         let dadosLojistaUsuario = {
             email_usuario: email,
             senha_usuario: senha,
             nome_lojista: nome,
-            telefone_lojista:telefone
+            telefone_lojista:telefoneMask
         }
 
         console.log(dadosLojistaUsuario);
 
         await createLojistaUsuario(dadosLojistaUsuario)
+    }
+})
+
+document.getElementById('iconPassword').addEventListener('click', () => {
+    let icon = document.getElementById('iconPassword')
+
+    let input = document.getElementById('inputSenha')
+
+    if(icon.getAttribute('name') == 'eye-outline'){
+        icon.setAttribute('name', 'eye-off-outline')
+        input.type = 'text'
+    }else{
+        icon.setAttribute('name', 'eye-outline')
+        input.type = 'password'
+    }
+})
+
+document.getElementById('iconPassword').addEventListener('click', () => {
+    let icon = document.getElementById('iconPasswordConfirm')
+
+    let input = document.getElementById('inputConfirmeSenha')
+
+    if(icon.getAttribute('name') == 'eye-outline'){
+        icon.setAttribute('name', 'eye-off-outline')
+        input.type = 'text'
+    }else{
+        icon.setAttribute('name', 'eye-outline')
+        input.type = 'password'
     }
 })
