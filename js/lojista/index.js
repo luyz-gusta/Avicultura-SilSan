@@ -171,33 +171,41 @@ const criarNovoProduto = async () => {
             abrirModal.classList.remove('open-modal')
         })
     } else {
-        console.log(precoOriginal.indexOf('.'));
-
+        let valorOriginal
+        let partsOriginal = precoOriginal.split('.');
+        
         if(precoOriginal.indexOf('.') === -1){
             precoOriginal+= '.00'
-            console.log('teste' + precoOriginal);
-        }
 
-        if(precoDesconto.indexOf('.') === -1){
-            precoDesconto+= '.00'
-            console.log('teste' + precoDesconto);
-        }
+            valorOriginal = precoOriginal
 
-        let partsOriginal = precoOriginal.split('.');
-        let partsDesconto = precoDesconto.split('.');
-
-        if(partsDesconto[1].length === 1){
-            partsDesconto[1] = partsDesconto[1] + '0';
-            precoDesconto = partsDesconto.join('.')
-            console.log(precoDesconto);
-        }
-
-        if(partsOriginal[1].length === 1){
+        }else if(partsOriginal[1].length === 1){
             partsOriginal[1] = partsOriginal[1] + '0';
             precoOriginal = partsOriginal.join('.')
-            console.log(precoOriginal);
+            
+            valorOriginal = precoOriginal
+        }else{
+            valorOriginal = toString(precoOriginal)
         }
-        
+
+        let valorDesconto
+        let partsDesconto = precoDesconto.split('.');
+        if(precoDesconto.indexOf('.') === -1){
+            precoDesconto+= '.00'
+
+            let valor2 = parseFloat(precoDesconto)
+
+            valorDesconto = valor2.toFixed(2)
+        }else if(partsDesconto[1].length === 1){
+            partsDesconto[1] = partsDesconto[1] + '0';
+            precoDesconto = partsDesconto.join('.')
+            
+            valorDesconto = precoDesconto
+        }else{
+            valorDesconto = precoDesconto
+        }
+
+        console.log(valorDesconto + " - " + valorOriginal);
 
         let jsonProduto = {
             nome: nome,
@@ -205,14 +213,16 @@ const criarNovoProduto = async () => {
             peso: parseFloat(peso),
             cupom: cupom,
             url: urlImagem,
-            preco_original: parseFloat(precoOriginal),
-            preco_desconto: parseFloat(precoDesconto),
-            id_tipo_produto: parseFloat(tipoProduto)
+            preco_original: valorOriginal,
+            preco_desconto: valorDesconto,
+            id_tipo_produto: parseInt(tipoProduto)
         }
 
+        console.log(jsonProduto);
+
         let abrirModal = document.getElementById('modal-adicionar')
-       // abrirModal.classList.remove('open-modal')
-       // let inserirProduto = await createProduto(jsonProduto)
+        abrirModal.classList.remove('open-modal')
+        await createProduto(jsonProduto)
     }
 }
 
