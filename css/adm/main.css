@@ -46,6 +46,27 @@ main {
     color: #FFF;
 }
 
+.buttons{
+    display: flex;
+    gap: 30px;
+}
+
+.cadastrar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: clamp(9.375rem, 4.5833rem + 12.7778vw, 16.5625rem);
+    height: clamp(3.125rem, 2.88rem + 0.9333vw, 4rem);
+    border-radius: 30px;
+    border: 1px solid #000;
+    background: #fa8029;
+
+    font-size: clamp(1rem, 0.72rem + 1.0667vw, 2rem);
+    font-family: "Glory";
+    font-style: italic;
+    font-weight: 700;
+}
+
 .exit {
     display: flex;
     justify-content: center;
