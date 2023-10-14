@@ -259,8 +259,10 @@ const atualizarProduto = async () => {
         document.querySelector('#sair').addEventListener('click', () => {
             abrirModal.classList.remove('open-modal')
         })
+    } else if(parseFloat(precoDesconto) > parseFloat(precoOriginal)){
+        alert("o preco original não pode ser menor do que o com desconto")
     } else {
-        let valorOriginal
+        let valorOriginal = ""
         let partsOriginal = precoOriginal.split('.');
         
         if(precoOriginal.indexOf('.') === -1){
@@ -277,7 +279,7 @@ const atualizarProduto = async () => {
             valorOriginal = precoOriginal
         }
 
-        let valorDesconto
+        let valorDesconto = ""
         let partsDesconto = precoDesconto.split('.');
         if(precoDesconto.indexOf('.') === -1){
             precoDesconto+= '.00'
@@ -293,6 +295,9 @@ const atualizarProduto = async () => {
         }else{
             valorDesconto = precoDesconto
         }
+
+
+        console.log(valorDesconto + "-" + valorOriginal);
 
         let jsonProduto = {
             id: id,
