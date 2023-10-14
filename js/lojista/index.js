@@ -260,6 +260,42 @@ const atualizarProduto = async () => {
             abrirModal.classList.remove('open-modal')
         })
     } else {
+        let valorOriginal
+        let partsOriginal = precoOriginal.split('.');
+        
+        if(precoOriginal.indexOf('.') === -1){
+            precoOriginal+= '.00'
+
+            valorOriginal = precoOriginal
+
+        }else if(partsOriginal[1].length === 1){
+            partsOriginal[1] = partsOriginal[1] + '0';
+            precoOriginal = partsOriginal.join('.')
+            
+            valorOriginal = precoOriginal
+        }else{
+            valorOriginal = toString(precoOriginal)
+        }
+
+        let valorDesconto
+        let partsDesconto = precoDesconto.split('.');
+        if(precoDesconto.indexOf('.') === -1){
+            precoDesconto+= '.00'
+
+            let valor2 = parseFloat(precoDesconto)
+
+            valorDesconto = valor2.toFixed(2)
+        }else if(partsDesconto[1].length === 1){
+            partsDesconto[1] = partsDesconto[1] + '0';
+            precoDesconto = partsDesconto.join('.')
+            
+            valorDesconto = precoDesconto
+        }else{
+            valorDesconto = precoDesconto
+        }
+
+        console.log(valorDesconto + " - " + valorOriginal);
+
         let jsonProduto = {
             id: id,
             nome: nome,
@@ -267,8 +303,8 @@ const atualizarProduto = async () => {
             peso: parseFloat(peso),
             cupom: cupom,
             url: urlImagem,
-            preco_original: parseFloat(precoOriginal),
-            preco_desconto: parseFloat(precoDesconto),
+            preco_original: valorOriginal,
+            preco_desconto: valorDesconto,
             id_tipo_produto: parseFloat(tipoProduto)
         }
 
