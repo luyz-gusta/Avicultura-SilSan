@@ -46,6 +46,7 @@ export const createProduto = async (produto) => {
 }
 
 export const updateProduto = async (produto) => {
+    console.log(produto);
     const url = `https://avicultura-silsa-api.cyclic.app/v1/avicultura-silsan/produto/${produto.id}`;
     const options = {
         method: 'PUT',
@@ -60,6 +61,7 @@ export const updateProduto = async (produto) => {
             if (response.ok) {
                 location.reload();
             } else {
+                console.log(response);
                 console.log('Erro ao atualizar o produto.');
             }
         })

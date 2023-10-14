@@ -274,7 +274,7 @@ const atualizarProduto = async () => {
             
             valorOriginal = precoOriginal
         }else{
-            valorOriginal = toString(precoOriginal)
+            valorOriginal = precoOriginal
         }
 
         let valorDesconto
@@ -294,8 +294,6 @@ const atualizarProduto = async () => {
             valorDesconto = precoDesconto
         }
 
-        console.log(valorDesconto + " - " + valorOriginal);
-
         let jsonProduto = {
             id: id,
             nome: nome,
@@ -307,6 +305,8 @@ const atualizarProduto = async () => {
             preco_desconto: valorDesconto,
             id_tipo_produto: parseFloat(tipoProduto)
         }
+
+        console.log(jsonProduto);
 
         await updateProduto(jsonProduto)
     }
