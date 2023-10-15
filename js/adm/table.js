@@ -1,6 +1,6 @@
 'use strict'
 
-import { getTodosLojistas } from "../adm/api.js"
+import { desetivarLojista, getTodosLojistas } from "../adm/api.js"
 
 const lojistas = await getTodosLojistas()
 
@@ -31,9 +31,55 @@ const criarTable = (logista) => {
     const iconDeletar = document.createElement('a')
     iconDeletar.classList.add('fas')
     iconDeletar.classList.add('fa-trash')
+    iconDeletar.classList.add('excluirLojista')
     //iconDeletar.href = "#modal__deletar"
     iconDeletar.addEventListener('click', function () {
-        localStorage.setItem('id', logista.id)
+        let abrirModalDelete = document.getElementById('modal-deletar')
+
+        abrirModalDelete.classList.add('open-modal')
+        let iconOld = document.getElementById('icon-old')
+        let iconNew = document.getElementById('icon-new')
+        let iconConfirmation = document.getElementById('icon-confirmation')
+
+
+        if(iconOld.classList[1] == 'fa-eye'){
+            iconOld.classList.remove('fa-eye')
+        }else{
+            iconOld.classList.remove('fa-eye-slash')
+        }
+
+        if(iconNew.classList[1] == 'fa-eye'){
+            iconNew.classList.remove('fa-eye')
+        }else{
+            iconNew.classList.remove('fa-eye-slash')
+        }
+
+        if(iconConfirmation.classList[1] == 'fa-eye'){
+            iconConfirmation.classList.remove('fa-eye')
+        }else{
+            iconConfirmation.classList.remove('fa-eye-slash')
+        }
+
+
+        let texto = document.querySelector('.text-deletar')
+        texto.textContent = `Deseja mesmo desativar o lojista ${logista.nome}?`
+
+        document.querySelector('.modal-deletar__close').addEventListener('click', () => {
+            iconOld.classList.add('fa-eye')
+            iconNew.classList.add('fa-eye')
+            iconConfirmation.classList.add('fa-eye')
+
+            abrirModalDelete.classList.remove('open-modal')
+        })
+
+        document.getElementById('deletar').addEventListener('click', async () => {
+            await desetivarLojista(logista.id_lojista)
+            abrirModalDelete.classList.remove('open-modal')
+        })
+
+        document.getElementById('naoDeletar').addEventListener('click', async () => {
+            abrirModalDelete.classList.remove('open-modal')
+        })
     })
     
 

@@ -3,18 +3,25 @@
     font-family: "Glory";
     font-style: italic;
     font-weight: 700;
+    padding-bottom: 10px;
+}
+
+.excluirLojista{
+    cursor: pointer;
 }
 
 .telefone{
     font-family: "Glory";
     font-style: italic;
     font-weight: 700;
+    padding-bottom: 10px;
 }
 
 .email{
     font-family: "Glory";
     font-style: italic;
     font-weight: 700;
+    padding-bottom: 10px;
 }
 
 .titulos{
@@ -22,7 +29,7 @@
     font-family: "Glory";
     font-style: italic;
     font-weight: 700;
-    border-spacing: 8px
+    border-spacing: 8px;
 }
 
 .titulo{

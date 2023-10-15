@@ -27,11 +27,11 @@ const goPaginaProduto = async () => {
                 localStorage.setItem('nivel', result.usuario[0].nivel)
                 window.location.href = "./adm.html"
             } else if (result.usuario[0].id_status_usuario == 2) { //LOJISTA
-                localStorage.setItem('id', result.usuario[0].id_usuario)
+                localStorage.setItem('id', result.usuario[0].id)
                 localStorage.setItem('email', result.usuario[0].email)
                 localStorage.setItem('senha', result.usuario[0].senha)
                 localStorage.setItem('nivel', result.usuario[0].nivel)
-                localStorage.setItem('nome', result.lojista.id_lojista)
+                localStorage.setItem('id_lojista', result.lojista.id_lojista)
                 localStorage.setItem('nome', result.lojista.nome)
                 localStorage.setItem('telefone', result.lojista.telefone)
                 window.location.href = "./lojista.html"
