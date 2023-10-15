@@ -173,6 +173,8 @@ const criarNovoProduto = async () => {
     } else {
         let valorOriginal
         let partsOriginal = precoOriginal.split('.');
+
+        console.log(precoOriginal);
         
         if(precoOriginal.indexOf('.') === -1){
             precoOriginal+= '.00'
@@ -205,7 +207,10 @@ const criarNovoProduto = async () => {
             valorDesconto = precoDesconto
         }
 
-        console.log(valorDesconto + " - " + valorOriginal);
+        console.log(precoOriginal);
+
+        console.log(valorOriginal);
+
 
         let jsonProduto = {
             nome: nome,
