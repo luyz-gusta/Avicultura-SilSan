@@ -1,6 +1,6 @@
 'use strict'
 
-import {getTodosLojistas, desativarLojista } from "./api.js"
+import {getTodosLojistas } from "./api.js"
 
 const lojistas = await getTodosLojistas()
 
@@ -98,3 +98,31 @@ const carregarTableLogista = async () => {
 }
 
 carregarTableLogista()
+
+const desativarLojista = async (idLojista) => {
+    const url = `https://avicultura-silsa-api.cyclic.app/v1/avicultura-silsan/desativar-lojista/${idLojista}`;
+    const options = {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+
+    fetch(url, options)
+        .then(response => {
+            console.log(response);
+            if (response.ok) {
+                location.reload();
+            } else {
+                console.log(response.body);
+                console.log(response.json);
+                console.log(response.status);
+                console.log(response.text);
+                console.log(response.ok);
+                console.log('Erro ao desativar usuario');
+            }
+        })
+        .catch(error => {
+            console.log('Ocorreu um erro na requisição:', error);
+        });
+}
