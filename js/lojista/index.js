@@ -187,7 +187,7 @@ const criarNovoProduto = async () => {
             
             valorOriginal = precoOriginal
         }else{
-            valorOriginal = toString(precoOriginal)
+            valorOriginal = precoOriginal
         }
 
         let valorDesconto
@@ -277,6 +277,7 @@ const atualizarProduto = async () => {
             
             valorOriginal = precoOriginal
         }else{
+            console.log(precoDesconto);
             valorOriginal = precoOriginal
         }
 
@@ -294,6 +295,7 @@ const atualizarProduto = async () => {
             
             valorDesconto = precoDesconto
         }else{
+            console.log(precoDesconto);
             valorDesconto = precoDesconto
         }
 
