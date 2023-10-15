@@ -207,10 +207,6 @@ const criarNovoProduto = async () => {
             valorDesconto = precoDesconto
         }
 
-        console.log(precoOriginal);
-
-        console.log(valorOriginal);
-
 
         let jsonProduto = {
             nome: nome,
