@@ -1,0 +1,31 @@
+
+.nome{
+    font-family: "Glory";
+    font-style: italic;
+    font-weight: 700;
+}
+
+.telefone{
+    font-family: "Glory";
+    font-style: italic;
+    font-weight: 700;
+}
+
+.email{
+    font-family: "Glory";
+    font-style: italic;
+    font-weight: 700;
+}
+
+.titulos{
+    font-size: 24px;
+    font-family: "Glory";
+    font-style: italic;
+    font-weight: 700;
+    border-spacing: 8px
+}
+
+.titulo{
+    text-align: start;
+    padding-bottom: 20px;
+}

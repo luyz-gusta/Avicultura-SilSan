@@ -89,7 +89,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    height: 280px;
+    height: 300px;
     width: clamp(20rem, 4rem + 80vw, 100rem);
     padding: clamp(1.25rem, 1.1875rem + 0.3125vw, 1.5625rem) clamp(1.25rem, 1rem + 1.25vw, 2.5rem);
     border-radius: 40px;

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/adm/header.css">
     <link rel="stylesheet" href="../css/adm/main.css">
+    <link rel="stylesheet" href="../css/adm/table.css">
     <link rel="stylesheet" href="../css/adm/modal_require-fields.css">
     <link rel="stylesheet" href="../css/adm/modal_confirmation-password.css">
     <link rel="stylesheet" href="../css/adm/modal_password-incorrect.css">
@@ -17,6 +18,7 @@
     <link rel="icon" type="image/png" href="../imgs/icon-logo.png" />
     <script src="https://kit.fontawesome.com/cb4f3aa626.js" crossorigin="anonymous"></script>
     <script type="module" defer src="../js/adm/password.js"></script>
+    <script type="module" defer src="../js/adm/table.js"></script>
     <title>SilSan-ADMIN</title>
 </head>
 
@@ -72,6 +74,23 @@
 
                 <a href="#" id="enviar"> Enviar </a>
             </form>
+        </section>
+        <section class="container__password">
+            <span class="new__password">Lista de Lojistas</span>
+            <table>
+                <div>
+                    <tr class="titulos">
+                        <th class="titulo">Nome</th>
+                        <th class="titulo">Telefone</th>
+                        <th class="titulo">Email</th>
+                    </tr>
+                </div>
+
+                <tbody id="tabelaItemsLogistica" class="tabelaItemsLogistica">
+                  <!-- ONDE VAI FICAR AS TABELAS -->
+                </tbody>
+            </table>
+        
         </section>
     </main>
 
