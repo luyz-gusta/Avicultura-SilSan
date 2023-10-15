@@ -43,7 +43,7 @@ export const updateUsuario = async (jsonUsuario, idUsuario) => {
         });
 }
 
-export const desetivarLojista = async (idLojista) => {
+export const desativarLojista = async (idLojista) => {
     const url = `https://avicultura-silsa-api.cyclic.app/v1/avicultura-silsan/desativar-lojista/${idLojista}`;
     const options = {
         method: 'PUT',

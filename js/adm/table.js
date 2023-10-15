@@ -1,6 +1,6 @@
 'use strict'
 
-import { desetivarLojista, getTodosLojistas } from "../adm/api.js"
+import {getTodosLojistas, desativarLojista } from "./api.js"
 
 const lojistas = await getTodosLojistas()
 
@@ -73,7 +73,7 @@ const criarTable = (logista) => {
         })
 
         document.getElementById('deletar').addEventListener('click', async () => {
-            await desetivarLojista(logista.id_lojista)
+            await desativarLojista(logista.id_lojista)
             abrirModalDelete.classList.remove('open-modal')
         })
 
