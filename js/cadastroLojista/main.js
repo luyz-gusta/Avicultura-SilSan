@@ -2,42 +2,17 @@
 
 import { createLojistaUsuario } from "./api.js"
 
-// const cadastrarLojista = async (event) => {
+function validarEmail(email) {
+    // Expressão regular para validar e-mails
+    var regex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 
-//     event.preventDefault();
+    if (regex.test(email)) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
-//     const nome = document.getElementById('inputNome').value
-//     const telefone = document.getElementById('inputTelefone').value
-//     const email = document.getElementById('inputEmail').value
-//     const senha = document.getElementById('inputSenha').value
-//     const confirmacaoSenha = document.getElementById('inputConfirmeSenha').value
-
-//     if (
-//         nome == null || nome == '' ||
-//         telefone == null || telefone == '' ||
-//         dataNascimento == null || dataNascimento == '' ||
-//         email == null || email == '' ||
-//         senha == null || senha == '' ||
-//         confirmacaoSenha == null || confirmacaoSenha == ''
-//     ) {
-//         alert('Require Fields')
-//     } else if (senha != confirmacaoSenha) {
-//         alert('confirmacao de senha diferente da senha')
-//     } else if (telefone.lenth > 12) {
-//         alert('telefone digitado incorretamente')
-//     } else {
-//         let dadosLojistaUsuario = {
-//             email_usuario: email,
-//             senha_usuario: senha,
-//             nome_lojista: nome,
-//             telefone_lojista:telefone
-//         }
-
-//         console.log(dadosLojistaUsuario);
-
-//         //await createLojistaUsuario(dadosLojistaUsuario)
-//     }
-// }
 
 document.getElementById('btn-enviar').addEventListener('click', async (event) => {
     event.preventDefault();
@@ -60,6 +35,8 @@ document.getElementById('btn-enviar').addEventListener('click', async (event) =>
         alert('confirmacao de senha diferente da senha')
     } else if (senha < 8) {
         alert('senha tem que ter no minimo 8 digitos')
+    } else if(!validarEmail(email)){
+        alert('Email é inválido')
     } else {
         const telefoneMask= telefone.replace(/\D/g, '');
 
