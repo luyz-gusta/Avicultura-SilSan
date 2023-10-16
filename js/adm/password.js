@@ -1,6 +1,6 @@
 'use strict'
 
-import { getUsuario} from "./api.js"
+import { getUsuario, updateUsuario} from "./api.js"
 
 const email = localStorage.getItem('email')
 const nameUser = email.split('@adm.com')
