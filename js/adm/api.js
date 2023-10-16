@@ -26,9 +26,8 @@ export const updateUsuario = async (jsonUsuario, idUsuario) => {
             if (response.ok) {
                 location.reload();
             } else {
-                console.log('Erro ao trocar senha');
+                alert('Erro ao trocar senha');
             }
-            return response.status
         })
         .catch(error => {
             console.log('Ocorreu um erro na requisição:', error);

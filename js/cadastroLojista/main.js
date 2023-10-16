@@ -80,7 +80,7 @@ document.getElementById('iconPassword').addEventListener('click', () => {
     }
 })
 
-document.getElementById('iconPassword').addEventListener('click', () => {
+document.getElementById('iconPasswordConfirm').addEventListener('click', () => {
     let icon = document.getElementById('iconPasswordConfirm')
 
     let input = document.getElementById('inputConfirmeSenha')
