@@ -17,13 +17,11 @@ export const createLojistaUsuario = async (lojista) => {
                 location.reload();
                 window.location.href = '../pages/adm.html'
             } else {
-                alert('Erro ao criar a o usuario do lijista confira os valores')
-                console.log('Erro ao criar lojista.');
-                console.log(response.status);
-                console.log(response.json);
-                console.log(response.text);
-                console.log(response.body);
-                console.log(response.ok);
+                if(response.status == 400){
+                    alert('ERRO, email já existente')
+                }else{
+                    alert('Erro ao criar a o usuario do lijista confira os valores')
+                }
             }
         })
         .catch(error => {
