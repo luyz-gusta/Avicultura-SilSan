@@ -126,3 +126,11 @@ const desativarLojista = async (idLojista) => {
             console.log('Ocorreu um erro na requisição:', error);
         });
 }
+
+const getTodosLojistas = async () => {
+    const url = `https://avicultura-silsa-api.cyclic.app/v1/avicultura-silsan/lojista`
+    const response = await fetch(url)
+    const data = await response.json()
+
+    return data
+}
