@@ -41,7 +41,7 @@ document.getElementById('btn-enviar').addEventListener('click', async (event) =>
         senha == null || senha == '' ||
         confirmacaoSenha == null || confirmacaoSenha == ''
     ) {
-        alert('Require Fields')
+        alert('NÃO PODE TER CAMPOS VAZIOS')
     } else if (senha != confirmacaoSenha) {
         alert('confirmacao de senha diferente da senha')
     } else if (senha < 8) {
