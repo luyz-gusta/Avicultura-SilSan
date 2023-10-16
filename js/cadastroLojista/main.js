@@ -13,6 +13,17 @@ function validarEmail(email) {
     }
 }
 
+function validarNomeUsuario(nomeUsuario) {
+    // Expressão regular que permite apenas letras e espaços
+    var regex = /^[A-Za-z\s]+$/;
+
+    if (regex.test(nomeUsuario)) {
+        return "Nome de usuário válido.";
+    } else {
+        return "Nome de usuário inválido. Use apenas letras e espaços.";
+    }
+}
+
 
 document.getElementById('btn-enviar').addEventListener('click', async (event) => {
     event.preventDefault();
@@ -37,7 +48,9 @@ document.getElementById('btn-enviar').addEventListener('click', async (event) =>
         alert('senha tem que ter no minimo 8 digitos')
     } else if(!validarEmail(email)){
         alert('Email é inválido')
-    } else {
+    }else if(!validarNomeUsuario(nome)){
+        alert('Nome é inválido')
+    }  else {
         const telefoneMask= telefone.replace(/\D/g, '');
 
         let dadosLojistaUsuario = {
